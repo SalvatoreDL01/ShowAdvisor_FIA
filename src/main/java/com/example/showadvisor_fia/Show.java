@@ -8,27 +8,22 @@ public class Show implements Serializable {
     private String type;
     private String description;
     private double release_year;
-    private String age_certification;
     private double runtime;
     private String genres;
-    private String production_countries;
     private String seasons;
-    private String imdb_id;
-    private double tmdb_popularity;
+    private double score;
 
-    public Show(String id, String title, String type, String description, double release_year, String age_certification, double runtime, String genres, String production_countries, String seasons, String imdb_id, double tmdb_popularity) {
+    public Show(String id, String title, String type, String description, double release_year, double runtime,
+                String genres, String seasons, double score) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.description = description;
         this.release_year = release_year;
-        this.age_certification = age_certification;
         this.runtime = runtime;
         this.genres = genres;
-        this.production_countries = production_countries;
         this.seasons = seasons;
-        this.imdb_id = imdb_id;
-        this.tmdb_popularity = tmdb_popularity;
+        this.score = score;
     }
 
     public String getId() {
@@ -71,14 +66,6 @@ public class Show implements Serializable {
         this.release_year = release_year;
     }
 
-    public String getAge_certification() {
-        return age_certification;
-    }
-
-    public void setAge_certification(String age_certification) {
-        this.age_certification = age_certification;
-    }
-
     public double getRuntime() {
         return runtime;
     }
@@ -95,14 +82,6 @@ public class Show implements Serializable {
         this.genres = genres;
     }
 
-    public String getProduction_countries() {
-        return production_countries;
-    }
-
-    public void setProduction_countries(String production_countries) {
-        this.production_countries = production_countries;
-    }
-
     public String getSeasons() {
         return seasons;
     }
@@ -111,20 +90,12 @@ public class Show implements Serializable {
         this.seasons = seasons;
     }
 
-    public String getImdb_id() {
-        return imdb_id;
+    public double getScore() {
+        return score;
     }
 
-    public void setImdb_id(String imdb_id) {
-        this.imdb_id = imdb_id;
-    }
-
-    public double getTmdb_popularity() {
-        return tmdb_popularity;
-    }
-
-    public void setTmdb_popularity(double tmdb_popularity) {
-        this.tmdb_popularity = tmdb_popularity;
+    public void setScore(double score) {
+        this.score = score;
     }
 
     @Override
@@ -134,14 +105,11 @@ public class Show implements Serializable {
                 ", title='" + title + '\'' +
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
-                ", release_year=" + release_year +
-                ", age_certification='" + age_certification + '\'' +
-                ", runtime=" + runtime +
+                ", release_year=" + release_year + '\'' +
+                ", runtime=" + runtime + '\'' +
                 ", genres='" + genres + '\'' +
-                ", production_countries='" + production_countries + '\'' +
                 ", seasons='" + seasons + '\'' +
-                ", imdb_id='" + imdb_id + '\'' +
-                ", tmdb_popularity=" + tmdb_popularity +
+                ", score='" + score +
                 '}';
     }
 }
