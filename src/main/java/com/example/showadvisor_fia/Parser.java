@@ -11,6 +11,7 @@ public class Parser {
 
     static void parse() throws IOException {
 
+        //funzione
         Path path = Paths.get("/home/giuseppe/IdeaProjects/ShowAdvisor_FIA/src/main/java/com/example/prova/t.json");
         String content = Files.readString(path);
         Show[] list = new Gson().fromJson(content, Show[].class);
