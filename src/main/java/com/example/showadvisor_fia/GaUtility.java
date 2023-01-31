@@ -1,6 +1,7 @@
 package com.example.showadvisor_fia;
 
 import javax.swing.text.html.HTMLDocument;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -49,6 +50,24 @@ public class GaUtility {
         p.getLista().add(individuo);
         individuo.setLista(l4);
         p.getLista().add(individuo);
+
+        return p;
+
+    }
+
+    static public Popolazione mutazione(Popolazione p) throws IOException {
+
+        Show[] showList = Parser.getInstance();
+        ArrayList<Individuo> lista = p.getLista();
+        Random random = new Random();
+        int n = random.nextInt(3000);
+        for(Individuo i: lista){
+            while(i.getLista().contains(showList[n])){
+                n = random.nextInt(3000);
+            }
+            int pos = random.nextInt(8);
+            i.getLista().add(pos, showList[n]);
+        }
 
         return p;
 
