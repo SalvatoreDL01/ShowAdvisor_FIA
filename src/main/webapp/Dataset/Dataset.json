@@ -21125,10 +21125,10 @@
     "type": "MOVIE",
     "description": "A young British soldier must find his way back to safety after his unit accidentally abandons him during a riot in the streets of Belfast.",
     "release_year": 2014,
-    "runtime": "R",
-    "genres": 100,
-    "seasons": "['thriller', 'drama', 'war', 'action', 'crime']",
-    "score": "['GB']"
+    "runtime": 100,
+    "genres": "['thriller', 'drama', 'war', 'action', 'crime']",
+    "seasons": 0,
+    "score": 6
   },
   {
     "id": "tm179772",

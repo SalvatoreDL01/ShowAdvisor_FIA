@@ -1,5 +1,6 @@
 package com.example.showadvisor_fia;
 
+import java.io.IOException;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,45 +18,36 @@ public class Individuo {
 
     }
 
-    public void crea(){
+    public void crea() throws IOException {
 
-        //creazione di un individuo in maniera casuale
-
-    }
-
-    public boolean add(Show s){
-
-        if(lista.size() > nElementi)
-            return false;
-        else{
-            lista.add(s);
-            return true;
+        Random random = new Random();
+        Show individuo;
+        Show[] showList = Parser.getInstance();
+        int i, n;
+        for(i=0; i<nElementi; i++){
+            n = random.nextInt(3000);
+            individuo = showList[n];
+            while(lista.contains(individuo)){
+                n = random.nextInt(3000);
+                individuo = showList[n];
+            }
+            lista.add(individuo);
         }
 
     }
 
-    public Show get(int i){
-
-        return lista.get(i);
-
+    public List<Show> getLista() {
+        return lista;
     }
 
-    public void replace(int i, Show s){
-
-        lista.set(i, s);
-
+    public void setLista(List<Show> lista) {
+        this.lista = lista;
     }
 
-    public Show remove(int i){
-
-        return lista.remove(i);
-
+    public String toString(){
+        String str = "";
+        for(Show s: lista)
+            str += s.toString() + "\n";
+        return  str;
     }
-
-    public void remove(Show s){
-
-        lista.remove(s);
-
-    }
-
 }

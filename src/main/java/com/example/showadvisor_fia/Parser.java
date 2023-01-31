@@ -9,14 +9,20 @@ import java.nio.file.Paths;
 
 public class Parser {
 
-    static void parse() throws IOException {
+    private static Show[] list = null;
 
-        //funzione
-        Path path = Paths.get("/home/giuseppe/IdeaProjects/ShowAdvisor_FIA/src/main/java/com/example/prova/t.json");
+    private Parser()throws IOException{
+        Path path = Paths.get("/home/giuseppe/IdeaProjects/ShowAdvisor_FIA/src/main/webapp/Dataset/Dataset.json");
         String content = Files.readString(path);
-        Show[] list = new Gson().fromJson(content, Show[].class);
-        System.out.println(list[1213]);
+        list = new Gson().fromJson(content, Show[].class);
+    }
 
+    public static Show[] getInstance() throws IOException {
+        if(list == null){
+            new Parser();
+            return list;
+        }
+        else return list;
     }
 
 }
