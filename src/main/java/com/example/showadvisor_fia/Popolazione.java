@@ -6,14 +6,31 @@ public class Popolazione {
 
     private ArrayList<Individuo> lista;
     private int nElementi;
+    //Da aggiustare
 
-    public Popolazione(int n){
 
+    public Popolazione(int nElementi) {
         lista = new ArrayList<>();
-        nElementi = n;
-
+        this.nElementi = nElementi;
     }
 
+    public ArrayList<Individuo> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Individuo> lista) {
+        this.lista = lista;
+    }
+
+    public int getnElementi() {
+        return nElementi;
+    }
+
+    public void setnElementi(int nElementi) {
+        this.nElementi = nElementi;
+    }
+
+/*
     public void inizializza(){
 
         int i = 0;
@@ -22,8 +39,9 @@ public class Popolazione {
         }
 
         for(Individuo e: lista)
+        //deve creare una popolazione. quindi x individui(liste di 5 show)
             e.crea();
 
     }
-
+*/
 }

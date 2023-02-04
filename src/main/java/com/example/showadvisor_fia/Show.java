@@ -2,7 +2,7 @@ package com.example.showadvisor_fia;
 
 import java.io.Serializable;
 
-public class Show implements Serializable {
+public class Show implements Serializable{
     private String id;
     private String title;
     private String type;
@@ -12,6 +12,7 @@ public class Show implements Serializable {
     private String genres;
     private String seasons;
     private double score;
+    private double individualFitness;
 
     public Show(String id, String title, String type, String description, double release_year, double runtime,
                 String genres, String seasons, double score) {
@@ -24,6 +25,7 @@ public class Show implements Serializable {
         this.genres = genres;
         this.seasons = seasons;
         this.score = score;
+        this.individualFitness=0;
     }
 
     public String getId() {
@@ -96,6 +98,14 @@ public class Show implements Serializable {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public double getIndividualFitness() {
+        return individualFitness;
+    }
+
+    public void setIndividualFitness(double individualFitness) {
+        this.individualFitness = individualFitness;
     }
 
     @Override
