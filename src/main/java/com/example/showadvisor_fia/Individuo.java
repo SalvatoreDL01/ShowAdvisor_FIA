@@ -2,9 +2,12 @@ package com.example.showadvisor_fia;
 
 import com.example.showadvisor_fia.Show;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Random;
+
 /*Classe che ha il compito di costruire un individuo */
 public class Individuo extends ArrayList<Show> {
 
@@ -117,5 +120,30 @@ public class Individuo extends ArrayList<Show> {
     @Override
     public void sort(Comparator c) {
         super.sort(c);
+    }
+
+    public void crea() throws IOException {
+
+        Random random = new Random();
+        Show individuo;
+        Show[] showList = Parser.getInstance();
+        int i, n;
+        for(i=0; i<5; i++){
+            n = random.nextInt(3000);
+            individuo = showList[n];
+            while(this.contains(individuo)){
+                n = random.nextInt(3000);
+                individuo = showList[n];
+            }
+            this.add(individuo);
+        }
+
+    }
+
+    public String toString(){
+        String str = "";
+        for(Show s: this)
+            str += s.toString() + "\n";
+        return  str;
     }
 }

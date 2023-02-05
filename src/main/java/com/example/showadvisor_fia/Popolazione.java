@@ -1,5 +1,6 @@
 package com.example.showadvisor_fia;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Popolazione {
@@ -29,6 +30,22 @@ public class Popolazione {
     public void setnElementi(int nElementi) {
         this.nElementi = nElementi;
     }
+
+    public void inizializza() throws IOException {
+        for(int i=0; i<nElementi; i++){
+            lista.add(new Individuo());
+        }
+        for(Individuo e: lista)
+            e.crea();
+    }
+
+    public String toString(){
+        String str = "";
+        for(Individuo i: lista)
+            str += i.toString();
+        return str;
+    }
+
 
 /*
     public void inizializza(){
