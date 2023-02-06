@@ -16,6 +16,16 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
+        Popolazione popolazione = new Popolazione(8);
+        popolazione.inizializza();
+        System.out.println(popolazione.getLista());
+        popolazione.getLista().remove(7);
+        popolazione.getLista().remove(6);
+        popolazione.getLista().remove(5);
+        popolazione.getLista().remove(4);
+        popolazione = GaUtility.crossOver(popolazione);
+        System.out.println("dopo il crossover");
+        System.out.println(popolazione.getLista());
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
