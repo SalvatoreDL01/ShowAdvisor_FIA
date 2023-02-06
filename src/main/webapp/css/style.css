@@ -1,0 +1,56 @@
+body{
+    padding-top: 70px;
+    text-shadow: none; 
+    background-image: url(logo.png);
+    background-position: center;
+    background-position: 40%;
+}
+
+.img-style{
+    object-position: center;
+    object-fit: contain;
+    opacity: 70%;
+}
+
+.navbar-brand {
+    padding-left: 2%;
+    padding-top: var(--bs-navbar-brand-padding-y);
+    padding-bottom: var(--bs-navbar-brand-padding-y);
+    margin-right: var(--bs-navbar-brand-margin-end);
+    font-size: var(--bs-navbar-brand-font-size);
+    color: var(--bs-navbar-brand-color);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.form-position{
+    margin-left:12%;
+    margin-top: 15%;
+}
+
+
+.card-body {
+    margin-left:12%;
+    margin-top: 2%;
+    opacity: 65%;
+    
+}
+
+.logo{
+    width : 480px;
+    margin-left: 48%;
+}
+
+.form-size{
+    margin-right: 48%;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
