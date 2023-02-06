@@ -3,11 +3,9 @@ package com.example.showadvisor_fia;
 import java.util.List;
 
 public class FunzioneFitness {
-    private static int SEASONCORTS = 2;
-    private static int SEASONLUNGA = 4;
     private static double RUNTIMESERIECORTA = 27;
     private static double RUNTIMESERIELUNGA = 50;
-    private static double CORTOMETRAGGIO = 15;
+    private static double CORTOMETRAGGIO = 50;
     private static double LUNGOMETRAGGIO = 75;
     /*Metodo che calcola il valore di fitness di uno show*/
     public static double calcolaIndividualFitness(Show s,Fitness f){
@@ -18,9 +16,12 @@ public class FunzioneFitness {
         else
             type=0.5;
         if(s.getType().equals("MOVIE"))
-            tot = s.getScore()*type*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato());
+            tot = s.getScore()*type*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*
+                    calcolaFitnessLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato());
         else
-            tot = s.getScore()*type*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaSeire(Integer.parseInt(s.getSeasons()),s.getRuntime(),f.getRuntimeDesiderato());
+            tot = s.getScore()*type*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaSeire
+                    (s.getRuntime(),f.getRuntimeDesiderato())*
+                    calcolaFitnessSeasons(Integer.parseInt(s.getSeasons()), f.getMax(), f.getTipologia());
         s.setIndividualFitness(tot);
         return tot;
     }
@@ -36,15 +37,32 @@ public class FunzioneFitness {
         return punteggio;
     }
     /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dalla lunghezza desiderata*/
-    public static double calcolaFitnessLunghezzaSeire(int seasons, double runtime, String lunghezza){
-        if(seasons==0)
+    public static double calcolaFitnessLunghezzaSeire(double runtime, String lunghezza){
+        if(runtime==0)
             return 0.5;
         if(lunghezza.equals("corta"))
-            return (SEASONCORTS/seasons)*(RUNTIMESERIECORTA/runtime);
+            return (RUNTIMESERIECORTA/runtime);
         if(lunghezza.equals("lunga"))
-            return (seasons/SEASONLUNGA)*(runtime/RUNTIMESERIELUNGA);
-        if(seasons>SEASONCORTS && seasons<SEASONLUNGA && runtime>RUNTIMESERIECORTA && runtime<RUNTIMESERIELUNGA)
+            return (runtime/RUNTIMESERIELUNGA);
+        if(runtime>RUNTIMESERIECORTA && runtime<RUNTIMESERIELUNGA)
             return 3.0;
+        return 0.5;
+    }
+    /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dal numero di stagioni massimo*/
+    public static double calcolaFitnessSeasons(int seasons, int max,String tipologia){
+        if(seasons==0 || tipologia.equals("MOVIE"))
+            return 0.5;
+        if(seasons <= max)
+            return 2;
+        return 0.5;
+    }
+    /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dal'intervallo di stagioni
+    desiderate*/
+    public static double calcolaFitnessSeasons(int seasons,int min, int max,String tipologia){
+        if(seasons==0 || tipologia.equals("MOVIE"))
+            return 0.5;
+        if(seasons <= max && seasons >= min)
+            return 2;
         return 0.5;
     }
     /*Metodo che calcola il valore della funzione di fitness, su un film, dipendente dalla lunghezza desiderata*/
@@ -57,7 +75,8 @@ public class FunzioneFitness {
             return 3.0;
         return 0.5;
     }
-    /*Metodo che calcola la funzione di fitness di un individuo della popolazione e ordina il cuo contenuto per valore di fitness*/
+    /*Metodo che calcola la funzione di fitness di un individuo della popolazione e ordina il cuo contenuto per valore
+     di fitness*/
     public static void calcolaTotalFitness(Fitness f, Individuo i){
         double tot=0;
         for(Show s: i){
