@@ -3,23 +3,20 @@ package com.example.showadvisor_fia;
 import java.util.List;
 
 public class FunzioneFitness {
-    private static double RUNTIMESERIECORTA = 27;
-    private static double RUNTIMESERIELUNGA = 50;
-    private static double CORTOMETRAGGIO = 50;
-    private static double LUNGOMETRAGGIO = 75;
+
+    private final static double RUNTIMESERIECORTA = 27;
+    private final static double RUNTIMESERIELUNGA = 50;
+    private final static double CORTOMETRAGGIO = 50;
+    private final static double LUNGOMETRAGGIO = 75;
+
     /*Metodo che calcola il valore di fitness di uno show*/
     public static double calcolaIndividualFitness(Show s,Fitness f){
-        double type;
         double tot;
-        if(s.getType().equals(f.getTipologia()))
-            type=2.0;
-        else
-            type=0.5;
         if(s.getType().equals("MOVIE"))
-            tot = s.getScore()*type*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*
+            tot = s.getScore()*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*
                     calcolaFitnessLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato());
         else
-            tot = s.getScore()*type*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaSeire
+            tot = s.getScore()*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaSeire
                     (s.getRuntime(),f.getRuntimeDesiderato())*
                     calcolaFitnessSeasons(Integer.parseInt(s.getSeasons()), f.getMax(), f.getTipologia());
         s.setIndividualFitness(tot);
@@ -41,9 +38,13 @@ public class FunzioneFitness {
         if(runtime==0)
             return 0.5;
         if(lunghezza.equals("corta"))
-            return (RUNTIMESERIECORTA/runtime);
+            if(runtime<=RUNTIMESERIECORTA)
+            return 3.0;
+        else return 0.5;
         if(lunghezza.equals("lunga"))
-            return (runtime/RUNTIMESERIELUNGA);
+            if(runtime>=RUNTIMESERIELUNGA)
+                return 3.0;
+            else return 0.5;
         if(runtime>RUNTIMESERIECORTA && runtime<RUNTIMESERIELUNGA)
             return 3.0;
         return 0.5;
@@ -68,9 +69,13 @@ public class FunzioneFitness {
     /*Metodo che calcola il valore della funzione di fitness, su un film, dipendente dalla lunghezza desiderata*/
     public static double calcolaFitnessLunghezzaFilm(double runtime, String lunghezza){
         if(lunghezza.equals("corta"))
-            return (CORTOMETRAGGIO/runtime);
+            if(runtime<=CORTOMETRAGGIO)
+                return 3.0;
+            else return 0.5;
         if(lunghezza.equals("lunga"))
-            return (runtime/LUNGOMETRAGGIO);
+            if(runtime>=LUNGOMETRAGGIO)
+                return 3.0;
+            else return 0.5;
         if(runtime>CORTOMETRAGGIO && runtime<LUNGOMETRAGGIO)
             return 3.0;
         return 0.5;
