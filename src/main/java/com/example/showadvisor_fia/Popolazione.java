@@ -3,7 +3,7 @@ package com.example.showadvisor_fia;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Popolazione {
+public class Popolazione extends ArrayList<Individuo>{
 
     private ArrayList<Individuo> lista;
     private int nElementi;
