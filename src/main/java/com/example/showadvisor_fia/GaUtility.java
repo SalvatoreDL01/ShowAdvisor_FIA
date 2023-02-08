@@ -10,63 +10,59 @@ public class GaUtility {
 
     static public Popolazione crossOver(Popolazione p){
 
-        ArrayList<Show> l1 = new ArrayList<>();
-        ArrayList<Show> l2 = new ArrayList<>();
-        ArrayList<Show> l3 = new ArrayList<>();
-        ArrayList<Show> l4 = new ArrayList<>();
-
-        int i = p.getLista().get(0).getLista().size();
         Random random = new Random();
-        int crossOverPoint = random.nextInt(8);
-        for(int j=0; j<i; j++){
-            if(j < crossOverPoint){
-                l1.add(p.getLista().get(0).getLista().get(j));
-                l2.add(p.getLista().get(1).getLista().get(j));
+        Popolazione popolazione = new Popolazione(4);
+        for(Individuo i: p)
+            popolazione.add(i);
+        Individuo i1 = popolazione.remove(random.nextInt(popolazione.size()-1));
+        Individuo i2 = popolazione.remove(random.nextInt(popolazione.size()-1));
+        Individuo i3 = popolazione.remove(0);
+        Individuo i4 = popolazione.remove(0);
+        Individuo i5 = new Individuo();
+        Individuo i6 = new Individuo();
+        Individuo i7 = new Individuo();
+        Individuo i8 = new Individuo();
+        int point1 = random.nextInt(i1.size()-1), point2 = random.nextInt(i1.size()-1);
+
+        for(int i=0; i<i1.size(); i++){
+            if(i<point1){
+                i5.add(i1.get(i));
+                i6.add(i2.get(i));
             }
             else{
-                l2.add(p.getLista().get(0).getLista().get(j));
-                l1.add(p.getLista().get(1).getLista().get(j));
+                i5.add(i2.get(i));
+                i6.add(i1.get(i));
             }
-
         }
-        for(int j=0; j<i; j++){
-            if(j < crossOverPoint){
-                l3.add(p.getLista().get(2).getLista().get(j));
-                l4.add(p.getLista().get(3).getLista().get(j));
+        for(int i=0; i<i1.size(); i++){
+            if(i<point2){
+                i7.add(i2.get(i));
+                i8.add(i3.get(i));
             }
             else{
-                l4.add(p.getLista().get(2).getLista().get(j));
-                l3.add(p.getLista().get(3).getLista().get(j));
+                i7.add(i3.get(i));
+                i8.add(i2.get(i));
             }
-
         }
-
-        Individuo individuo = new Individuo(8);
-        individuo.setLista(l1);
-        p.getLista().add(individuo);
-        individuo.setLista(l2);
-        p.getLista().add(individuo);
-        individuo.setLista(l3);
-        p.getLista().add(individuo);
-        individuo.setLista(l4);
-        p.getLista().add(individuo);
-
+        p.add(i5);
+        p.add(i6);
+        p.add(i7);
+        p.add(i8);
         return p;
-
     }
 
     static public Popolazione mutazione(Popolazione p) throws IOException {
 
         Show[] showList = Parser.getInstance();
-        ArrayList<Individuo> lista = p.getLista();
+        ArrayList<Individuo> list = p.getLista();
         Random random = new Random();
         int n = random.nextInt(3000);
-        for(Individuo i: lista){
-            while(i.getLista().contains(showList[n])){
+        for(Individuo i: list){
+            while(i.contains(showList[n])){
                 n = random.nextInt(3000);
             }
             int pos = random.nextInt(8);
-            i.getLista().add(pos, showList[n]);
+            i.add(pos, showList[n]);
         }
 
         return p;

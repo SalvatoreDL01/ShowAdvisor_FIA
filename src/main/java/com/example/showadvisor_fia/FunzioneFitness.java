@@ -82,7 +82,7 @@ public class FunzioneFitness {
     }
     /*Metodo che calcola la funzione di fitness di un individuo della popolazione e ordina il cuo contenuto per valore
      di fitness*/
-    public static void calcolaTotalFitness(Fitness f, Individuo i){
+    public static double calcolaTotalFitness(Fitness f, Individuo i){
         double tot=0;
         for(Show s: i){
             tot += calcolaIndividualFitness(s,f);
@@ -90,5 +90,8 @@ public class FunzioneFitness {
         i.setFitnessTotale(tot);
         //l'ordinamento per fitness può essere ritardato a poco prima di stampare la lista all'utente
         i.sort(new SortShowByFitness());
+
+        //Sasà ho aggiunto il valore di ritorno a questa funzione perchè mi serviva nella selezione
+        return tot;
     }
 }
