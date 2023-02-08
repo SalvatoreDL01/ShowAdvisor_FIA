@@ -13,17 +13,17 @@ public class FunzioneFitness {
     public static double calcolaIndividualFitness(Show s,Fitness f){
         double tot;
         if(s.getType().equals("MOVIE"))
-            tot = s.getScore()*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*
+            tot = s.getScore()*calcolaFitnessGeneri(s.getGenres(),f.getGeneri())*
                     calcolaFitnessLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato());
         else
-            tot = s.getScore()*calgolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaSeire
+            tot = s.getScore()*calcolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaSeire
                     (s.getRuntime(),f.getRuntimeDesiderato())*
                     calcolaFitnessSeasons(Integer.parseInt(s.getSeasons()), f.getMax(), f.getTipologia());
         s.setIndividualFitness(tot);
         return tot;
     }
     /*Metodo che calcola il valore della funzione di fitness dipendente dal numero di generi conosciuti.*/
-    public static double calgolaFitnessGeneri(String generiShow, List<String> desiderati){
+    public static double calcolaFitnessGeneri(String generiShow, List<String> desiderati){
         double punteggio=0;
         for(String genere: desiderati){
             if(generiShow.contains(genere))
@@ -87,11 +87,9 @@ public class FunzioneFitness {
         for(Show s: i){
             tot += calcolaIndividualFitness(s,f);
         }
-        i.setFitnessTotale(tot);
-        //l'ordinamento per fitness può essere ritardato a poco prima di stampare la lista all'utente
-        i.sort(new SortShowByFitness());
+        i.setFitnessTotale(tot/i.size());
 
-        //Sasà ho aggiunto il valore di ritorno a questa funzione perchè mi serviva nella selezione
-        return tot;
+        return tot/i.size();
     }
 }
+// i.sort(new SortShowByFitness());
