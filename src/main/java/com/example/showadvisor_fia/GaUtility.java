@@ -11,12 +11,13 @@ public class GaUtility {
     static public Popolazione crossOver(Popolazione p){
         Random random = new Random();
         Popolazione popolazione = new Popolazione(4);
-        for(Individuo i: p)
-            popolazione.add(i);
-        Individuo i1 = popolazione.remove(random.nextInt(popolazione.size()-1));
-        Individuo i2 = popolazione.remove(random.nextInt(popolazione.size()-1));
-        Individuo i3 = popolazione.remove(0);
-        Individuo i4 = popolazione.remove(0);
+        for(Individuo i: p.getLista())
+            popolazione.getLista().add(i);
+        System.out.println(popolazione.size());
+        Individuo i1 = popolazione.getLista().remove(random.nextInt(3));
+        Individuo i2 = popolazione.getLista().remove(random.nextInt(2));
+        Individuo i3 = popolazione.getLista().remove(0);
+        Individuo i4 = popolazione.getLista().remove(0);
         Individuo i5 = new Individuo();
         Individuo i6 = new Individuo();
         Individuo i7 = new Individuo();

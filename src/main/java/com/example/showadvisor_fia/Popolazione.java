@@ -47,7 +47,7 @@ public class Popolazione extends ArrayList<Individuo>{
     }
 
 
-/*
+    /*
     public void inizializza(){
 
         int i = 0;
