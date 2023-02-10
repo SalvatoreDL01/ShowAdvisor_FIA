@@ -2,7 +2,7 @@ body{
     height : 100vh;
     padding-top: 70px;
     text-shadow: none;
-    background-image: url(logo.png);
+    background-image: url("../immagini/logo.png");
     background-position: center;
     background-position: 40%;
 }
