@@ -17,7 +17,7 @@
 <nav class="navbar bg-dark fixed-top" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="logo SA.png" alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
+            <img src="../immagini/logo SA.png" alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
             ShowAdvisor!
         </a>
     </div>
