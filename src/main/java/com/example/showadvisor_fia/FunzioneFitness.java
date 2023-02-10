@@ -5,32 +5,32 @@ import java.util.List;
 public class FunzioneFitness {
 
     private final static double RUNTIMESERIECORTA = 27;
-    private final static double RUNTIMESERIELUNGA = 50;
-    private final static double CORTOMETRAGGIO = 50;
-    private final static double LUNGOMETRAGGIO = 75;
+    private final static double RUNTIMESERIELUNGA = 44;
+    private final static double CORTOMETRAGGIO = 75;
+    private final static double LUNGOMETRAGGIO = 100;
 
     /*Metodo che calcola il valore di fitness di uno show*/
     public static double calcolaIndividualFitness(Show s,Fitness f){
         double tot;
         if(s.getType().equals("MOVIE"))
-            tot = s.getScore()*calcolaFitnessGeneri(s.getGenres(),f.getGeneri())*
-                    calcolaFitnessLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato());
+            tot =Math.pow(s.getScore()* calcolaFitnessLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato()),
+                    calcolaFitnessGeneri(s.getGenres(),f.getGeneri()));
         else
-            tot = s.getScore()*calcolaFitnessGeneri(s.getGenres(),f.getGeneri())*calcolaFitnessLunghezzaSeire
-                    (s.getRuntime(),f.getRuntimeDesiderato())*
-                    calcolaFitnessSeasons(Integer.parseInt(s.getSeasons()), f.getMax(), f.getTipologia());
+            tot =Math.pow(s.getScore()*calcolaFitnessLunghezzaSeire(s.getRuntime(),f.getRuntimeDesiderato())
+                    * calcolaFitnessSeasons(Integer.parseInt(s.getSeasons()), f.getMax(), f.getTipologia())
+                    ,calcolaFitnessGeneri(s.getGenres(),f.getGeneri()));
         s.setIndividualFitness(tot);
         return tot;
     }
     /*Metodo che calcola il valore della funzione di fitness dipendente dal numero di generi conosciuti.*/
     public static double calcolaFitnessGeneri(String generiShow, List<String> desiderati){
-        double punteggio=0;
+        double punteggio=1;
         for(String genere: desiderati){
             if(generiShow.contains(genere))
                 punteggio += 1;
         }
-        if(punteggio == 0)
-            return 0.5;
+        if(punteggio == 1)
+            return -desiderati.size();
         return punteggio;
     }
     /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dalla lunghezza desiderata*/
