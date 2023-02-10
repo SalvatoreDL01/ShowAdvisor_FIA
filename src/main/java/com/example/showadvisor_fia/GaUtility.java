@@ -26,7 +26,7 @@ public class GaUtility {
             if(i<point1){
                 i5.add(i1.get(i));
                 i6.add(i2.get(i));
-            }//
+            }//p
             else{
                 i5.add(i2.get(i));
                 i6.add(i1.get(i));
