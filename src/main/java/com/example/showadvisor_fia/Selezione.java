@@ -12,7 +12,7 @@ public class Selezione {
 
     private ArrayList<Individuo> individui;
     private Popolazione p;
-    private ArrayList<Individuo> risultati;
+    private ArrayList<Individuo> ultimiRisultati;
 
 
     public ArrayList<Individuo> selezione(Fitness f){
@@ -25,11 +25,12 @@ public class Selezione {
 
         //ordinamento della lista per valore di fitness totale
         ArrayList<Individuo> risultatiOrdinati = orderByFitness(individui);
-
+        ArrayList<Individuo> result = new ArrayList<>();
         for(int i = 0; i<5; i++)
-            risultati.add(risultatiOrdinati.get(i));
+            result.add(risultatiOrdinati.get(i));
 
-        return risultati;
+        ultimiRisultati = result;
+        return result;
     }
 
     //funzione che ordina la lista in base al valore di ogni individuo
@@ -71,10 +72,10 @@ public class Selezione {
     }
 
     public ArrayList<Individuo> getRisultati() {
-        return risultati;
+        return ultimiRisultati;
     }
 
     public void setRisultati(ArrayList<Individuo> risultati) {
-        this.risultati = risultati;
+        this.ultimiRisultati = risultati;
     }
 }
