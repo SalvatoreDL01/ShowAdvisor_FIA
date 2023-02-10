@@ -9,7 +9,6 @@ import java.util.Random;
 public class GaUtility {
 
     static public Popolazione crossOver(Popolazione p){
-
         Random random = new Random();
         Popolazione popolazione = new Popolazione(4);
         for(Individuo i: p)
@@ -23,12 +22,11 @@ public class GaUtility {
         Individuo i7 = new Individuo();
         Individuo i8 = new Individuo();
         int point1 = random.nextInt(i1.size()-1), point2 = random.nextInt(i1.size()-1);
-
         for(int i=0; i<i1.size(); i++){
             if(i<point1){
                 i5.add(i1.get(i));
                 i6.add(i2.get(i));
-            }
+            }//p
             else{
                 i5.add(i2.get(i));
                 i6.add(i1.get(i));
