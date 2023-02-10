@@ -66,7 +66,6 @@
                         <input type="Nome" class="form-control" id="inputPassword2" placeholder="Nome">
                     </div>
 
-
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3">Cerca</button>
                     </div>
@@ -101,6 +100,12 @@
         <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
     </div>
 </div>
+
+<form method="get" action = "Execution">
+
+    <input type="submit">
+
+</form>
 
 <script src="js/script.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
