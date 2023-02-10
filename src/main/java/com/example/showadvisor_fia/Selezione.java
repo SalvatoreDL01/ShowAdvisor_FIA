@@ -12,8 +12,7 @@ public class Selezione {
 
     private ArrayList<Individuo> individui;
     private Popolazione p;
-    private FunzioneFitness funzioneFitness;
-    private ArrayList<Individuo> risultati;
+    private ArrayList<Individuo> ultimiRisultati;
 
 
     public ArrayList<Individuo> selezione(Fitness f){
@@ -22,15 +21,16 @@ public class Selezione {
 
         //calcolo del valore della funzione di fitness per ogni individuo
         for(Individuo i : individui)
-            i.setFitnessTotale(funzioneFitness.calcolaTotalFitness(f, i));
+            i.setFitnessTotale(FunzioneFitness.calcolaTotalFitness(f, i));
 
         //ordinamento della lista per valore di fitness totale
         ArrayList<Individuo> risultatiOrdinati = orderByFitness(individui);
-
+        ArrayList<Individuo> result = new ArrayList<>();
         for(int i = 0; i<5; i++)
-            risultati.add(risultatiOrdinati.get(i));
+            result.add(risultatiOrdinati.get(i));
 
-        return risultati;
+        ultimiRisultati = result;
+        return result;
     }
 
     //funzione che ordina la lista in base al valore di ogni individuo
@@ -55,5 +55,27 @@ public class Selezione {
         return ordinata;
     }
 
+    public ArrayList<Individuo> getIndividui() {
+        return individui;
+    }
 
+    public void setIndividui(ArrayList<Individuo> individui) {
+        this.individui = individui;
+    }
+
+    public Popolazione getP() {
+        return p;
+    }
+
+    public void setP(Popolazione p) {
+        this.p = p;
+    }
+
+    public ArrayList<Individuo> getRisultati() {
+        return ultimiRisultati;
+    }
+
+    public void setRisultati(ArrayList<Individuo> risultati) {
+        this.ultimiRisultati = risultati;
+    }
 }
