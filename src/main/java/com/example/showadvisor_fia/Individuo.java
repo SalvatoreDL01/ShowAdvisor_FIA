@@ -10,9 +10,10 @@ public class Individuo extends ArrayList<Show> {
 
     private double fitnessTotale;
     //fitness multi obiettivo
-    private int nShowGeneri;
-    private int nShowRuntime;
-    private double scoreMedio;
+    private Integer nShowGeneri;
+    private Integer sSeasonsCorrette;
+    private Integer nShowRuntime;
+    private Double scoreMedio;
 
     public Individuo(int initialCapacity) {
         super(initialCapacity);
@@ -21,7 +22,7 @@ public class Individuo extends ArrayList<Show> {
     public Individuo() {
         nShowGeneri=0;
         nShowRuntime=0;
-        scoreMedio=0;
+        scoreMedio=0.0;
     }
 
     public Individuo(Collection c) {
@@ -88,28 +89,36 @@ public class Individuo extends ArrayList<Show> {
         return null;
     }
 
-    public int getnShowGeneri() {
+    public Integer getnShowGeneri() {
         return nShowGeneri;
     }
 
-    public void setnShowGeneri(int nShowGeneri) {
+    public void setnShowGeneri(Integer nShowGeneri) {
         this.nShowGeneri = nShowGeneri;
     }
 
-    public int getnShowRuntime() {
+    public Integer getnShowRuntime() {
         return nShowRuntime;
     }
 
-    public void setnShowRuntime(int nShowRuntime) {
+    public void setnShowRuntime(Integer nShowRuntime) {
         this.nShowRuntime = nShowRuntime;
     }
 
-    public double getScoreMedio() {
+    public Double getScoreMedio() {
         return scoreMedio;
     }
 
-    public void setScoreMedio(double scoreMedio) {
+    public void setScoreMedio(Double scoreMedio) {
         this.scoreMedio = scoreMedio;
+    }
+
+    public Integer getsSeasonsCorrette() {
+        return sSeasonsCorrette;
+    }
+
+    public void setsSeasonsCorrette(Integer sSeasonsCorrette) {
+        this.sSeasonsCorrette = sSeasonsCorrette;
     }
 
     @Override
