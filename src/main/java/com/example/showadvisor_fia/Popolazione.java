@@ -31,12 +31,12 @@ public class Popolazione extends ArrayList<Individuo>{
         this.nElementi = nElementi;
     }
 
-    public void inizializza() throws IOException {
+    public void inizializza(String tipo) throws IOException {
         for(int i=0; i<nElementi; i++){
             lista.add(new Individuo());
         }
         for(Individuo e: lista)
-            e.crea();
+            e.crea(tipo);
     }
 
     public String toString(){
