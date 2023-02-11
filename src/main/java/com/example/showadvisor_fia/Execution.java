@@ -32,17 +32,30 @@ public class Execution extends HttpServlet {
 
         Fitness fitness = new Fitness( generi, runtime, tipo,0);
 
-        for(int i=0;i<1000;i++){
+        for(int i=0;i<5000;i++){
             System.out.println("fdbfuksri\n");
         Selezione sel = new Selezione();
         sel.setP(popolazione);
         ArrayList<Individuo> l= sel.selezione(fitness);
         popolazione.setLista(l);
-
-        GaUtility.crossOver(popolazione);
-        GaUtility.mutazione(popolazione);
+        System.out.println("popolazione size" + popolazione.getLista().size());
+        GaUtility.crossOver(popolazione, fitness);
+        /*    Individuo ii = new Individuo();
+            ii.crea();
+            popolazione.getLista().add(ii);
+            Individuo ii1 = new Individuo();
+            ii1.crea();
+            popolazione.getLista().add(ii1);
+            Individuo ii2 = new Individuo();
+            ii2.crea();
+            popolazione.getLista().add(ii2);
+            Individuo ii3 = new Individuo();
+            ii3.crea();
+            popolazione.getLista().add(ii3);
+*/        GaUtility.mutazione(popolazione, fitness);
             for(Individuo ind:l){
                 System.out.println(ind.getFitnessTotale());
+                System.out.println(ind);
             }
         }
         List<Individuo> li = popolazione.getLista();

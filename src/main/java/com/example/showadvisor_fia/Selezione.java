@@ -26,7 +26,7 @@ public class Selezione {
         //ordinamento della lista per valore di fitness totale
         ArrayList<Individuo> risultatiOrdinati = orderByFitness(individui);
         ArrayList<Individuo> result = new ArrayList<>();
-        for(int i = 0; i<5; i++)
+        for(int i = 0; i<4; i++)
             result.add(risultatiOrdinati.get(i));
 
         ultimiRisultati = result;
