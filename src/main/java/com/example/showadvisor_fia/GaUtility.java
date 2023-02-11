@@ -4,6 +4,7 @@ import javax.swing.text.html.HTMLDocument;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 public class GaUtility {
@@ -53,26 +54,33 @@ public class GaUtility {
     }
 
     static public Popolazione mutazione(Popolazione p, Fitness f) throws IOException {
-
-        Show[] showList = Parser.getInstance();
+        int x = 0;
+        if(f.getTipologia().equals("MOVIE"))
+            x = 2444;
+        else
+            x = 722;
+        List<Show> showList = Parser.getInstance(f.getTipologia());
+        ArrayList<Show> listShow = (ArrayList<Show>) showList;
         ArrayList<Individuo> list = p.getLista();
         Random random = new Random();
-        int n = random.nextInt(3000);
+        int n = random.nextInt(x);
         for(Individuo i: list){
+            //inizio algoritmo per trovare l'elemento peggiore
             double min = 0;
             int pos = 0;
             for(int j =0; j<5; j++){
-                double fit = FunzioneFitness.calcolaIndividualFitness(i.get(j), f);
+                double fit = FunzioneFitness.calcolaIndividualFitness(i, i.get(j), f);
                 if(fit < min) {
                     min = fit;
                     pos = j;
                 }
             }
-            while(i.contains(showList[n])){
-                n = random.nextInt(3000);
+            //fine algoritmo per trovare l'elemento peggiore
+            while(i.contains(listShow.get(n))){
+                n = random.nextInt(x);
             }
             //int pos = random.nextInt(8);
-            i.add(pos, showList[n]);
+            i.add(pos, listShow.get(n));
         }
 
         for(Individuo ind: p.getLista())
