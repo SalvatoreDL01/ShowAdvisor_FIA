@@ -19,7 +19,7 @@ public class Execution extends HttpServlet {
         response.setContentType("text/html");
 
         Popolazione popolazione = new Popolazione(8);
-        popolazione.inizializza();
+        popolazione.inizializza("MOVIE");
         System.out.println(popolazione.getLista());
         List<String> generi = new ArrayList<String>();
 

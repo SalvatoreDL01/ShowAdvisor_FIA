@@ -3,21 +3,25 @@ package com.example.showadvisor_fia;
 import com.example.showadvisor_fia.Show;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Random;
+import java.util.*;
 
 /*Classe che ha il compito di costruire un individuo */
 public class Individuo extends ArrayList<Show> {
 
     private double fitnessTotale;
+    //fitness multi obiettivo
+    private int nShowGeneri;
+    private int nShowRuntime;
+    private double scoreMedio;
 
     public Individuo(int initialCapacity) {
         super(initialCapacity);
     }
 
     public Individuo() {
+        nShowGeneri=0;
+        nShowRuntime=0;
+        scoreMedio=0;
     }
 
     public Individuo(Collection c) {
@@ -84,6 +88,30 @@ public class Individuo extends ArrayList<Show> {
         return null;
     }
 
+    public int getnShowGeneri() {
+        return nShowGeneri;
+    }
+
+    public void setnShowGeneri(int nShowGeneri) {
+        this.nShowGeneri = nShowGeneri;
+    }
+
+    public int getnShowRuntime() {
+        return nShowRuntime;
+    }
+
+    public void setnShowRuntime(int nShowRuntime) {
+        this.nShowRuntime = nShowRuntime;
+    }
+
+    public double getScoreMedio() {
+        return scoreMedio;
+    }
+
+    public void setScoreMedio(double scoreMedio) {
+        this.scoreMedio = scoreMedio;
+    }
+
     @Override
     public boolean add(Show o) {
         if(this.size()<6)
@@ -122,18 +150,23 @@ public class Individuo extends ArrayList<Show> {
         super.sort(c);
     }
 
-    public void crea() throws IOException {
+    public void crea(String tipo) throws IOException {
+        int x;
+        if(tipo.equals("MOVIE"))
+            x=2444;
+        else
+            x=722;
 
         Random random = new Random();
         Show individuo;
-        Show[] showList = Parser.getInstance();
+        List<Show> showList = Parser.getInstance(tipo);
         int i, n;
         for(i=0; i<5; i++){
-            n = random.nextInt(3000);
-            individuo = showList[n];
+            n = random.nextInt(x);
+            individuo = showList.get(n);
             while(this.contains(individuo)){
-                n = random.nextInt(3000);
-                individuo = showList[n];
+                n = random.nextInt(x);
+                individuo = showList.get(n);
             }
             this.add(individuo);
         }

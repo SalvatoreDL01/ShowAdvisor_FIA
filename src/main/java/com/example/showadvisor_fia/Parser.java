@@ -13,33 +13,34 @@ public class Parser {
 
     private static Show[] list = null;
 
-    private static List listFilm = new ArrayList<Show>();
-    private static List listSerie = new ArrayList<Show>();
+    private static List<Show> listFilm = new ArrayList<Show>();
+    private static List<Show> listSerie = new ArrayList<Show>();
 
     public Parser()throws IOException{
         Path path = Paths.get("C:\\Users\\utente\\IdeaProjects\\ShowAdvisor_FIA\\src\\main\\webapp\\Dataset\\Dataset.json");
         String content = Files.readString(path);
         list = new Gson().fromJson(content, Show[].class);
         for(Show s: list)
-            if(s.getType().equals("MOVIE"))
+            if(s.getType().contains("MOVIE"))
                 listFilm.add(s);
         else
             listSerie.add(s);
     }
 
-    public static Show[] getInstance() throws IOException {
-        if(list == null){
+    public static List<Show> getInstance(String tipo) throws IOException {
+        if(list == null)
             new Parser();
-            return list;
-        }
-        else return list;
+        if(tipo.equals("MOVIE"))
+            return listFilm;
+        else
+            return listSerie;
     }
 
-    public List getListFilm() {
+    public List<Show> getListFilm() {
         return listFilm;
     }
 
-    public List getListSerie() {
+    public List<Show> getListSerie() {
         return listSerie;
     }
 }
