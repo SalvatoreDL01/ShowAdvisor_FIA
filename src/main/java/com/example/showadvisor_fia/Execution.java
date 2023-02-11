@@ -32,7 +32,7 @@ public class Execution extends HttpServlet {
 
         Fitness fitness = new Fitness( generi, runtime, tipo,0);
 
-        for(int i=0;i<5000;i++){
+        for(int i=0;i<1000;i++){
             System.out.println("fdbfuksri\n");
         Selezione sel = new Selezione();
         sel.setP(popolazione);

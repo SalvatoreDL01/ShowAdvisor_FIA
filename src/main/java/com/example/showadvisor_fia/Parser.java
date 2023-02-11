@@ -17,7 +17,7 @@ public class Parser {
     private static List<Show> listSerie = new ArrayList<Show>();
 
     public Parser()throws IOException{
-        Path path = Paths.get("/home/giuseppe/IdeaProjects/ShowAdvisor_FIA/src/main/webapp/Dataset/Dataset.json");
+        Path path = Paths.get("C:/Users/utente/IdeaProjects/ShowAdvisor_FIA/src/main/webapp/Dataset/Dataset.json");
         String content = Files.readString(path);
         list = new Gson().fromJson(content, Show[].class);
         for(Show s: list)
