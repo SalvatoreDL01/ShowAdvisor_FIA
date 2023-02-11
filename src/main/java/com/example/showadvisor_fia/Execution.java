@@ -22,6 +22,7 @@ public class Execution extends HttpServlet {
         popolazione.inizializza("MOVIE");
         System.out.println(popolazione.getLista());
         List<String> generi = new ArrayList<String>();
+        ArrayList<Individuo> banca = new ArrayList<>();
 
         generi.add("horror");
         generi.add("crime");
@@ -31,10 +32,10 @@ public class Execution extends HttpServlet {
         String runtime = "corta";
 
         Fitness fitness = new Fitness( generi, runtime, tipo,0);
-
+        Selezione sel = new Selezione();
         for(int i=0;i<1000;i++){
             System.out.println("fdbfuksri\n");
-        Selezione sel = new Selezione();
+
         sel.setP(popolazione);
         ArrayList<Individuo> l= sel.selezione(fitness);
         popolazione.setLista(l);
@@ -57,16 +58,10 @@ public class Execution extends HttpServlet {
                 System.out.println(ind.getFitnessTotale());
                 System.out.println(ind);
             }
+
         }
-        List<Individuo> li = popolazione.getLista();
-        Individuo max = li.get(0);
-        for(Individuo ind:li){
-            FunzioneFitness.calcolaTotalFitness(fitness,ind);
-            if(ind.getFitnessTotale()>max.getFitnessTotale())
-                max=ind;
-        }
-        System.out.println(max);
-        System.out.println(max.getFitnessTotale());
+        sel.setP(popolazione);
+        System.out.println("migliore\n"+popolazione.getLista().get(0));
     }
 
     public void destroy() {

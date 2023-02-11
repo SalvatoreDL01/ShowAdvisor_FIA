@@ -1,6 +1,7 @@
 package com.example.showadvisor_fia;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Show implements Serializable{
     private String id;
@@ -106,6 +107,19 @@ public class Show implements Serializable{
 
     public void setIndividualFitness(double individualFitness) {
         this.individualFitness = individualFitness;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Show)) return false;
+        Show show = (Show) o;
+        return getId().equals(show.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 
     @Override
