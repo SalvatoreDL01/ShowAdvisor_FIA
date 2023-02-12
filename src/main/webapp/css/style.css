@@ -1,10 +1,10 @@
 body{
-    height : 100vh;
-    padding-top: 70px;
+    height: 100vh;
     text-shadow: none;
     background-image: url("../immagini/logo.png");
     background-position: center;
-    background-position: 40%;
+    background-position-y: -145px;
+    padding-top: 150px;
 }
 
 .img-style{
@@ -29,12 +29,34 @@ body{
     margin-top: 15%;
 }
 
-
-.card-body {
-    margin-left:12%;
+.cardFilm{
+    margin-left: 15%;
     margin-top: 2%;
     opacity: 65%;
+    margin-right: 15%;
+    margin-bottom : 5%;
+}
 
+.card-bodyFilm {
+    margin-top: 2%;
+    opacity: 65%;
+    margin-right: 15%;
+    margin-bottom : 5%;
+}
+
+.cardSerie{
+    margin-left: 15%;
+    margin-top: 2%;
+    opacity: 65%;
+    margin-right: 15%;
+    margin-bottom : 5%;
+}
+
+.card-bodySerie{
+    margin-top: 2%;
+    opacity: 65%;
+    margin-right: 15%;
+    margin-bottom : 5%;
 }
 
 .logo{
@@ -167,4 +189,37 @@ input[type="range"]::-moz-range-thumb{
     pointer-events: auto;
     -moz-appearance: none;
     box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
+
+.empty{
+    height : 20px;
+}
+
+.buttonPosition1{
+    position: center;
+
+}
+
+.buttonPosition2{
+    position: center;
+}
+
+.risultati{
+    position: absolute;
+    top: 850px;
+    width : 100%;
+    padding-left: 15%;
+    padding-right: 15%;
+    margin-bottom: 30%;
+    padding-bottom: 15%;
+    opacity : 70%;
+}
+.accordion-item{
+    opacity : 70%;
+    background-color: #b02a37;
+}
+
+.accordion-button{
+    opacity : 70%;
+    background-color: #b02a37;
 }
