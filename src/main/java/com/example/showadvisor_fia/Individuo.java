@@ -10,7 +10,7 @@ public class Individuo extends ArrayList<Show> {
 
     private double fitnessTotale;
     //fitness multi obiettivo
-    private Integer nShowGeneri;
+    private Double nShowGeneri;
     private Integer sSeasonsCorrette;
     private Integer nShowRuntime;
     private Double scoreMedio;
@@ -20,7 +20,7 @@ public class Individuo extends ArrayList<Show> {
     }
 
     public Individuo() {
-        nShowGeneri=0;
+        nShowGeneri=0.0;
         nShowRuntime=0;
         scoreMedio=0.0;
     }
@@ -89,11 +89,11 @@ public class Individuo extends ArrayList<Show> {
         return null;
     }
 
-    public Integer getnShowGeneri() {
+    public Double getnShowGeneri() {
         return nShowGeneri;
     }
 
-    public void setnShowGeneri(Integer nShowGeneri) {
+    public void setnShowGeneri(Double nShowGeneri) {
         this.nShowGeneri = nShowGeneri;
     }
 

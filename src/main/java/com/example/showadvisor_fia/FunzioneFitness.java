@@ -107,11 +107,11 @@ public class FunzioneFitness {
         i.setnShowRuntime(0);
         i.setScoreMedio(0.0);
         i.setsSeasonsCorrette(0);
-        i.setnShowGeneri(0);
+        i.setnShowGeneri(0.0);
         for(Show s: i){
             tot += calcolaIndividualFitness(i,s,f);
         }
-        int ix = i.getnShowGeneri();
+        i.setnShowGeneri(i.getnShowGeneri()/i.size());
         i.setScoreMedio(i.getScoreMedio()/i.size());
         i.setFitnessTotale(tot/i.size());
 

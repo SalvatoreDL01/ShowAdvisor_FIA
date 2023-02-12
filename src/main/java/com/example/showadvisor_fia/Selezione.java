@@ -39,9 +39,10 @@ public class Selezione {
         ArrayList<Individuo> ordinata = new ArrayList<>();
         individui.sort(new SortIndividuiByNGeneri());
 
-        ArrayList<Individuo> subList = new ArrayList<>();
+
         do {
-            int numeroPrimi = individui.get(0).getnShowGeneri();
+            ArrayList<Individuo> subList = new ArrayList<>();
+            double numeroPrimi = individui.get(0).getnShowGeneri();
 
             for (Individuo i : individui) {
                 //selezione per generi
