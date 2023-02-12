@@ -3,7 +3,7 @@ package com.example.showadvisor_fia;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Popolazione extends ArrayList<Individuo>{
+public class Popolazione{
 
     private ArrayList<Individuo> lista;
     private int nElementi;
@@ -32,11 +32,14 @@ public class Popolazione extends ArrayList<Individuo>{
     }
 
     public void inizializza(String tipo) throws IOException {
-        for(int i=0; i<nElementi; i++){
-            lista.add(new Individuo());
+        for(int i=0; i<nElementi;){
+            Individuo individuo = new Individuo();
+            individuo.crea(tipo);
+            if(!lista.contains(individuo)){
+                lista.add(individuo);
+                i++;
+            }
         }
-        for(Individuo e: lista)
-            e.crea(tipo);
     }
 
     public String toString(){

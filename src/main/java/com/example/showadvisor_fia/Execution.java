@@ -16,8 +16,6 @@ public class Execution extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-
         Popolazione popolazione = new Popolazione(8);
         popolazione.inizializza("MOVIE");
         System.out.println(popolazione.getLista());
@@ -40,19 +38,7 @@ public class Execution extends HttpServlet {
         popolazione.setLista(l);
         System.out.println("popolazione size" + popolazione.getLista().size());
         GaUtility.crossOver(popolazione, fitness);
-        /*    Individuo ii = new Individuo();
-            ii.crea();
-            popolazione.getLista().add(ii);
-            Individuo ii1 = new Individuo();
-            ii1.crea();
-            popolazione.getLista().add(ii1);
-            Individuo ii2 = new Individuo();
-            ii2.crea();
-            popolazione.getLista().add(ii2);
-            Individuo ii3 = new Individuo();
-            ii3.crea();
-            popolazione.getLista().add(ii3);
-*/        GaUtility.mutazione(popolazione, fitness);
+        GaUtility.mutazione(popolazione, fitness);
             for(Individuo ind:l){
                 System.out.println(ind.getFitnessTotale());
                 System.out.println(ind);

@@ -14,7 +14,7 @@ public class GaUtility {
         Popolazione popolazione = new Popolazione(4);
         for(Individuo i: p.getLista())
             popolazione.getLista().add(i);
-        System.out.println(popolazione.size());
+        System.out.println(popolazione.getLista().size());
         Individuo i1 = popolazione.getLista().remove(random.nextInt(3));
         Individuo i2 = popolazione.getLista().remove(random.nextInt(2));
         Individuo i3 = popolazione.getLista().remove(0);
