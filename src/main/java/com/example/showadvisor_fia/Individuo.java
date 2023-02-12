@@ -1,7 +1,5 @@
 package com.example.showadvisor_fia;
 
-import com.example.showadvisor_fia.Show;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -139,9 +137,13 @@ public class Individuo extends ArrayList<Show> {
         return super.remove(index);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
+
+    public boolean equals(Individuo o) {
+        for(Show s:o){
+            if(!this.contains(s))
+                return false;
+        }
+        return true;
     }
 
     @Override
