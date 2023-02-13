@@ -56,13 +56,19 @@ public class GaUtility {
     static public Popolazione mutazione(Popolazione p, Fitness f) throws IOException {
         int x = 0;
         if(f.getTipologia().equals("MOVIE"))
+            //numero di film nel dataset
             x = 2444;
         else
+            //numero di serie nel dataset
             x = 722;
+        //estrae una lista dal dataset corrispondente alla tipologia selezionata
         List<Show> showList = Parser.getInstance(f.getTipologia());
+
         ArrayList<Show> listShow = (ArrayList<Show>) showList;
         ArrayList<Individuo> list = p.getLista();
+
         Random random = new Random();
+
         int n = random.nextInt(x);
         for(Individuo i: list){
             //inizio algoritmo per trovare l'elemento peggiore
@@ -79,7 +85,6 @@ public class GaUtility {
             while(i.contains(listShow.get(n))){
                 n = random.nextInt(x);
             }
-            //int pos = random.nextInt(8);
             i.add(pos, listShow.get(n));
         }
 
