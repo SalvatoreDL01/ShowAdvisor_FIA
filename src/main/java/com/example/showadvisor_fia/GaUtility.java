@@ -69,7 +69,7 @@ public class GaUtility {
             double min = 0;
             int pos = 0;
             for(int j =0; j<5; j++){
-                double fit = FunzioneFitness.calcolaIndividualFitness(i, i.get(j), f);
+                double fit = FunzioneFitness.calcolaNumericIndividualFitness(i.get(j), f);
                 if(fit < min) {
                     min = fit;
                     pos = j;

@@ -29,7 +29,7 @@ public class Execution extends HttpServlet {
         String tipo="MOVIE";
         String runtime = "corta";
 
-        Fitness fitness = new Fitness( generi, runtime, tipo,2);
+        Fitness fitness = new Fitness( generi, runtime, tipo,2,1);
         Selezione sel = new Selezione();
         for(int i=0;i<1000;i++){
             System.out.println("fdbfuksri\n");

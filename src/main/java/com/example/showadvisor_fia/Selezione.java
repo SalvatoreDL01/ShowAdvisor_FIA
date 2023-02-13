@@ -21,7 +21,7 @@ public class Selezione {
 
         //calcolo del valore della funzione di fitness per ogni individuo
         for (Individuo i : individui)
-            i.setFitnessTotale(FunzioneFitness.calcolaTotalFitness(f, i));
+            FunzioneFitness.calcolaTotalFitness(f, i);
 
         //ordinamento della lista per valore di fitness totale
         ArrayList<Individuo> risultatiOrdinati = orderByFitness(individui, f);
