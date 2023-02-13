@@ -12,25 +12,14 @@ public class Selezione {
 
     private ArrayList<Individuo> individui;
     private Popolazione p;
-    private ArrayList<Individuo> ultimiRisultati;
 
 
     public ArrayList<Individuo> selezione(Fitness f) {
 
         individui = p.getLista();
-
-        //calcolo del valore della funzione di fitness per ogni individuo
         for (Individuo i : individui)
-            FunzioneFitness.calcolaTotalFitness(f, i);
-
-        //ordinamento della lista per valore di fitness totale
-        ArrayList<Individuo> risultatiOrdinati = orderByFitness(individui, f);
-        ArrayList<Individuo> result = new ArrayList<>();
-        for (int i = 0; i < 4; i++)
-            result.add(risultatiOrdinati.get(i));
-
-        ultimiRisultati = result;
-        return result;
+            i.setFitnessTotale(FunzioneFitness.calcolaTotalFitness(f, i));
+        return orderByFitness(individui, f);
     }
 
     //funzione che ordina la lista in base al valore di ogni individuo
@@ -38,8 +27,6 @@ public class Selezione {
 
         ArrayList<Individuo> ordinata = new ArrayList<>();
         individui.sort(new SortIndividuiByNGeneri());
-
-
         do {
             ArrayList<Individuo> subList = new ArrayList<>();
             double numeroPrimi = individui.get(0).getnShowGeneri();
@@ -48,13 +35,12 @@ public class Selezione {
                 //selezione per generi
                 if (numeroPrimi == i.getnShowGeneri()) {
                     subList.add(i);
-                } else {
+                }
+                else {
                     numeroPrimi = i.getnShowGeneri();
                     break;
                 }
-
             }
-
             subList.sort(new SortIndividuiByNRuntime());
             ArrayList<Individuo> subList1 = new ArrayList<>();
             int tipo = subList.get(0).getnShowRuntime();
@@ -134,13 +120,5 @@ public class Selezione {
 
     public void setP(Popolazione p) {
         this.p = p;
-    }
-
-    public ArrayList<Individuo> getRisultati() {
-        return ultimiRisultati;
-    }
-
-    public void setRisultati(ArrayList<Individuo> risultati) {
-        this.ultimiRisultati = risultati;
     }
 }

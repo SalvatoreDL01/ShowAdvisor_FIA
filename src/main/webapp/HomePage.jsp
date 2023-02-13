@@ -42,8 +42,9 @@
                                     <div class="col-auto">
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected>Seleziona la durata desiderara</option>
-                                            <option value="cortometraggio">Cortometraggio</option>
-                                            <option value="lungometraggio">Lungometraggio</option>
+                                            <option value="cortometraggio">Corta (massimo 80 minuti)</option>
+                                            <option value="mediaDurata">Media (tra 80 e 120 minuti)</option>
+                                            <option value="lungometraggio">Lungo (minimo 120 minuti)</option>
                                         </select>
                                     </div>
                                 </row>
@@ -261,8 +262,9 @@
                                     <div class="col-auto">
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected>Seleziona la durata desiderata</option>
-                                            <option value="1">Corta</option>
-                                            <option value="2">Lunga</option>
+                                            <option value="1">Corta (massimo 27 minuti)</option>
+                                            <option value="1">Media (tra 27 e 48 minuti)</option>
+                                            <option value="2">Lunga (minimo 44 minuti)</option>
                                         </select>
                                     </div>
                                 </row>
