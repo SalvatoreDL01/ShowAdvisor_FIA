@@ -20,6 +20,7 @@ public class Individuo extends ArrayList<Show> {
     public Individuo() {
         nShowGeneri=0.0;
         nShowRuntime=0;
+        sSeasonsCorrette=0;
         scoreMedio=0.0;
     }
 
