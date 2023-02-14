@@ -35,16 +35,16 @@
             <div style="min-height: 120px;">
                 <div class="collapse collapse-vertical" id="collapseWidthExample">
                     <div class="cardFilm card-bodyFilm card card-body">
-                        <form  method="get" action = "Execution">
+                        <form  method="get" action = "ServletFilm">
                             <table>
 
                                 <row class = "empty">
                                     <div class="col-auto">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" name = "durataFilm" id = "selezionaDurata2" aria-label="Default select example">
                                             <option selected>Seleziona la durata desiderara</option>
-                                            <option value="cortometraggio">Corta (massimo 80 minuti)</option>
-                                            <option value="mediaDurata">Media (tra 80 e 120 minuti)</option>
-                                            <option value="lungometraggio">Lungo (minimo 120 minuti)</option>
+                                            <option value="0">Corta (massimo 80 minuti)</option>
+                                            <option value="1">Media (tra 80 e 120 minuti)</option>
+                                            <option value="2">Lungo (minimo 120 minuti)</option>
                                         </select>
                                     </div>
                                 </row>
@@ -55,7 +55,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="thrillerFilm">
+                                                    <input class="form-check-input" name = "generiFilm" type="checkbox" value="thriller" id="thrillerFilm">
                                                     <label class="form-check-label" for="thrillerFilm">
                                                         Thriller
                                                     </label>
@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="sportFilm" >
+                                                    <input class="form-check-input" name = "generiFilm" type="checkbox" value="sport" id="sportFilm" >
                                                     <label class="form-check-label" for="sportFilm">
                                                         Sport
                                                     </label>
@@ -71,7 +71,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="scifiFilm" >
+                                                    <input class="form-check-input" name = "generiFilm" type="checkbox" value="scifi" id="scifiFilm" >
                                                     <label class="form-check-label" for="scifiFilm">
                                                         Scifi
                                                     </label>
@@ -86,7 +86,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="animationFilm" >
+                                                    <input class="form-check-input" name = "generiFilm" type="checkbox" value="animation" id="animationFilm" >
                                                     <label class="form-check-label" for="animationFilm">
                                                         Animation
                                                     </label>
@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="fantasyFilm" >
+                                                    <input class="form-check-input" name = "generiFilm" type="checkbox" value="fantasy" id="fantasyFilm" >
                                                     <label class="form-check-label" for="fantasyFilm">
                                                         Fantasy
                                                     </label>
@@ -102,7 +102,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="familyFilm" >
+                                                    <input class="form-check-input" name = "generiFilm" type="checkbox" value="family" id="familyFilm" >
                                                     <label class="form-check-label" for="familyFilm">
                                                         Family
                                                     </label>
@@ -117,7 +117,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="romanceFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="romance" name = "generiFilm" id="romanceFilm" >
                                                     <label class="form-check-label" for="romanceFilm">
                                                         Romance
                                                     </label>
@@ -125,7 +125,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="warFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="war" name = "generiFilm" id="warFilm" >
                                                     <label class="form-check-label" for="warFilm">
                                                         War
                                                     </label>
@@ -133,7 +133,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="crimeFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="crime" name = "generiFilm" id="crimeFilm" >
                                                     <label class="form-check-label" for="crimeFilm">
                                                         Crime
                                                     </label>
@@ -148,7 +148,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="europeanFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="european" name = "generiFilm" id="europeanFilm" >
                                                     <label class="form-check-label" for="europeanFilm">
                                                         European
                                                     </label>
@@ -156,7 +156,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="documentationFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="documentation" name = "generiFilm" id="documentationFilm" >
                                                     <label class="form-check-label" for="documentationFilm">
                                                         Documentation
                                                     </label>
@@ -164,7 +164,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="actionFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="action" name = "generiFilm" id="actionFilm" >
                                                     <label class="form-check-label" for="actionFilm">
                                                         Action
                                                     </label>
@@ -179,7 +179,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="westernFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="western" name = "generiFilm" id="westernFilm" >
                                                     <label class="form-check-label" for="westernFilm">
                                                         Western
                                                     </label>
@@ -187,7 +187,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="musicFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="music" name = "generiFilm" id="musicFilm" >
                                                     <label class="form-check-label" for="musicFilm">
                                                         Music
                                                     </label>
@@ -195,7 +195,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="comedyFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="comedy" name = "generiFilm" id="comedyFilm" >
                                                     <label class="form-check-label" for="comedyFilm">
                                                         Comedy
                                                     </label>
@@ -210,7 +210,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="horrorFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="horror" name = "generiFilm" id="horrorFilm" >
                                                     <label class="form-check-label" for="horrorFilm">
                                                         Horror
                                                     </label>
@@ -218,7 +218,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="dramaFilm" >
+                                                    <input class="form-check-input" type="checkbox" value="drama" name = "generiFilm" id="dramaFilm" >
                                                     <label class="form-check-label" for="dramaFilm">
                                                         Drama
                                                     </label>
@@ -255,14 +255,14 @@
             <div style="min-height: 120px;">
                 <div class="collapse collapse-vertical" id="collassaSerieTv">
                     <div class="card card-body cardSerie card-bodySerie">
-                        <form  method="get" action = "Execution">
+                        <form  method="get" action = "ServletSerie">
                             <table>
 
                                 <row class = "empty">
                                     <div class="col-auto">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" name = "durataSerie" id = "selezionaDurata" aria-label="Default select example">
                                             <option selected>Seleziona la durata desiderata</option>
-                                            <option value="1">Corta (massimo 27 minuti)</option>
+                                            <option value="0">Corta (massimo 27 minuti)</option>
                                             <option value="1">Media (tra 27 e 48 minuti)</option>
                                             <option value="2">Lunga (minimo 44 minuti)</option>
                                         </select>
@@ -275,7 +275,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="thrillerSerie">
+                                                    <input name = "generiSerie" class="form-check-input" type="checkbox" value="thriller" id="thrillerSerie">
                                                     <label class="form-check-label" for="thrillerFilm">
                                                         Thriller
                                                     </label>
@@ -283,7 +283,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="sportSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="sport" id="sportSerie" >
                                                     <label class="form-check-label" for="sportSerie">
                                                         Sport
                                                     </label>
@@ -291,7 +291,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="scifiSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="scifi" id="scifiSerie" >
                                                     <label class="form-check-label" for="scifiSerie">
                                                         Scifi
                                                     </label>
@@ -306,7 +306,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="animationSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="animation" id="animationSerie" >
                                                     <label class="form-check-label" for="animationSerie">
                                                         Animation
                                                     </label>
@@ -314,7 +314,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="fantasySerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="fantasy" id="fantasySerie" >
                                                     <label class="form-check-label" for="fantasySerie">
                                                         Fantasy
                                                     </label>
@@ -322,7 +322,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="familySerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="family" id="familySerie" >
                                                     <label class="form-check-label" for="familySerie">
                                                         Family
                                                     </label>
@@ -337,7 +337,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="romanceSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="romance" id="romanceSerie" >
                                                     <label class="form-check-label" for="romanceSerie">
                                                         Romance
                                                     </label>
@@ -345,7 +345,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="warSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="war" id="warSerie" >
                                                     <label class="form-check-label" for="warSerie">
                                                         War
                                                     </label>
@@ -353,7 +353,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="crimeSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="crime" id="crimeSerie" >
                                                     <label class="form-check-label" for="crimeSerie">
                                                         Crime
                                                     </label>
@@ -368,7 +368,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="europeanSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="european" id="europeanSerie" >
                                                     <label class="form-check-label" for="europeanSerie">
                                                         European
                                                     </label>
@@ -376,7 +376,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="documentationSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="documentation" id="documentationSerie" >
                                                     <label class="form-check-label" for="documentationSerie">
                                                         Documentation
                                                     </label>
@@ -384,7 +384,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="actionSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="action" id="actionSerie" >
                                                     <label class="form-check-label" for="actionSerie">
                                                         Action
                                                     </label>
@@ -399,7 +399,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="westernSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="western" id="westernSerie" >
                                                     <label class="form-check-label" for="westernSerie">
                                                         Western
                                                     </label>
@@ -407,7 +407,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="musicSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="music" id="musicSerie" >
                                                     <label class="form-check-label" for="musicSerie">
                                                         Music
                                                     </label>
@@ -415,7 +415,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="comedySerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="comedy" id="comedySerie" >
                                                     <label class="form-check-label" for="comedySerie">
                                                         Comedy
                                                     </label>
@@ -430,7 +430,7 @@
                                         <div class="row justify-content-start">
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="horrorSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="horror" id="horrorSerie" >
                                                     <label class="form-check-label" for="horrorSerie">
                                                         Horror
                                                     </label>
@@ -438,7 +438,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" value="" id="dramaSerie" >
+                                                    <input class="form-check-input" name = "generiSerie" type="checkbox" value="drama" id="dramaSerie" >
                                                     <label class="form-check-label" for="dramaSerie">
                                                         Drama
                                                     </label>
@@ -455,11 +455,11 @@
                                 <row>
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput" class="form-label">Numero minimo di stagioni</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Minimo">
+                                        <input type="number" max="18" min ="0" name = "minSeason" class="form-control" id="formGroupExampleInput" placeholder="Minimo" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput2" class="form-label">Numero massimo di stagioni</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Massimo">
+                                        <input type="number" max = "18" min = "0" name = "maxSeason" class="form-control" id="formGroupExampleInput2" placeholder="Massimo" required>
                                     </div>
                                 </row>
 
@@ -479,7 +479,7 @@
         </div>
     </div>
 </div>
-
+<!--
 <div class = "risultati">
     <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
@@ -553,6 +553,19 @@
             </div>
         </div>
     </div>
+</div>
+-->
+
+<div class="risultati">
+    <ul class="list-group">
+        <li class="list-group-item" name ="result1"></li>
+        <li class="list-group-item" name ="result2"></li>
+        <li class="list-group-item" name ="result3"></li>
+        <li class="list-group-item" name ="result4"></li>
+        <li class="list-group-item" name ="result5"></li>
+        <li class="list-group-item" name ="result6"></li>
+        <li class="list-group-item" name ="result7"></li>
+    </ul>
 </div>
 
 <script src="js/script.js"></script>

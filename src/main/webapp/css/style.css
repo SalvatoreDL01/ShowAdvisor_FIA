@@ -223,3 +223,32 @@ input[type="range"]::-moz-range-thumb{
     opacity : 70%;
     background-color: #b02a37;
 }
+
+.list-group-item+.list-group-item {
+    border-top-width: 0;
+    opacity : 70%;
+    height : 30px;
+    background-color: #b02a37;
+}
+
+list-group-item:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-top-width: 0;
+    height : 20px;
+    opacity : 70%;
+    background-color: #b02a37;
+}
+
+.list-group-item {
+    height : 20px;
+    opacity : 70%;
+    background-color: #b02a37;
+    position: relative;
+    display: block;
+    padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+    color: var(--bs-list-group-color);
+    text-decoration: none;
+    background-color: var(--bs-list-group-bg);
+    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+}
