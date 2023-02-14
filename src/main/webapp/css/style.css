@@ -226,7 +226,7 @@ input[type="range"]::-moz-range-thumb{
 
 .list-group-item+.list-group-item {
     border-top-width: 0;
-    opacity : 70%;
+    opacity : 95%;
     height : 30px;
     background-color: #fff;
 }
@@ -236,13 +236,13 @@ list-group-item:first-child {
     border-top-right-radius: inherit;
     border-top-width: 0;
     height : 30px;
-    opacity : 70%;
+    opacity : 95%;
     background-color: #fff;
 }
 
 .list-group-item {
     height : 30px;
-    opacity : 70%;
+    opacity : 95%;
     background-color: #fff;
     position: relative;
     display: block;
