@@ -7,12 +7,14 @@ public class Fitness {
     private String runtimeDesiderato;
     private String tipologia;
     private int max;
+    private int min;
 
-    public Fitness(List<String> generi, String runtimeDesiderato, String tipologia,int max) {
+    public Fitness(List<String> generi, String runtimeDesiderato, String tipologia,int max,int min) {
         this.generi = generi;
         this.runtimeDesiderato = runtimeDesiderato;
         this.tipologia = tipologia;
         this.max = max;
+        this.min = min;
     }
 
     public List<String> getGeneri() {
@@ -45,5 +47,13 @@ public class Fitness {
 
     public void setMax(int max) {
         this.max = max;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
     }
 }

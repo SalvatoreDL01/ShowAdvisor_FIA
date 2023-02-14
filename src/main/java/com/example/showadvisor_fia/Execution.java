@@ -22,14 +22,14 @@ public class Execution extends HttpServlet {
         List<String> generi = new ArrayList<String>();
         ArrayList<Individuo> banca = new ArrayList<>();
 
-        generi.add("horror");
-        generi.add("crime");
-        generi.add("thriller");
+        generi.add("fantasy");
+        generi.add("european");
+        generi.add("documentation");
 
-        String tipo="MOVIE";
+        String tipo="SHOW";
         String runtime = "corta";
 
-        Fitness fitness = new Fitness( generi, runtime, tipo,0);
+        Fitness fitness = new Fitness( generi, runtime, tipo,2,1);
         Selezione sel = new Selezione();
         for(int i=0;i<1000;i++){
             System.out.println("fdbfuksri\n");
