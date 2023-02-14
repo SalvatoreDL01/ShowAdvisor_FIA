@@ -96,21 +96,21 @@ public class FunzioneFitness {
         i.setScoreMedio(i.getScoreMedio()/i.size());
     }
 
-    /*Metodo che calcola il valore di fitness di uno show*/
+    /*Metodo che calcola il valore di uno show*/
     public static double calcolaNumericIndividualFitness(Show s,Fitness f){
         double tot;
         if(s.getType().equals("MOVIE"))
-            tot =Math.pow(s.getScore()* calcolaFitnessLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato()),
-                    calcolaFitnessGeneri(s.getGenres(),f.getGeneri()));
+            tot =Math.pow(s.getScore()* calcolaValoreLunghezzaFilm(s.getRuntime(),f.getRuntimeDesiderato()),
+                    calcolaValoreGeneri(s.getGenres(),f.getGeneri()));
         else
-            tot =Math.pow(s.getScore()*calcolaFitnessLunghezzaSeire(s.getRuntime(),f.getRuntimeDesiderato())
-                            * calcolaFitnessSeasons(Integer.parseInt(s.getSeasons()), f.getMax(), f.getTipologia())
-                    ,calcolaFitnessGeneri(s.getGenres(),f.getGeneri()));
+            tot =Math.pow(s.getScore()*calcolaValoreLunghezzaSeire(s.getRuntime(),f.getRuntimeDesiderato())
+                            * calcolaValoreSeasons(Integer.parseInt(s.getSeasons()),f.getMin() ,f.getMax(), f.getTipologia())
+                    ,calcolaValoreGeneri(s.getGenres(),f.getGeneri()));
         s.setIndividualFitness(tot);
         return tot;
     }
-    /*Metodo che calcola il valore della funzione di fitness dipendente dal numero di generi conosciuti.*/
-    public static double calcolaFitnessGeneri(String generiShow, List<String> desiderati){
+    /*Metodo che calcola il valore dipendente dal numero di generi conosciuti.*/
+    public static double calcolaValoreGeneri(String generiShow, List<String> desiderati){
         double punteggio=1;
         for(String genere: desiderati){
             if(generiShow.contains(genere))
@@ -120,8 +120,8 @@ public class FunzioneFitness {
             return -desiderati.size();
         return punteggio;
     }
-    /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dalla lunghezza desiderata*/
-    public static double calcolaFitnessLunghezzaSeire(double runtime, String lunghezza){
+    /*Metodo che calcola il valore, su una serie, dipendente dalla lunghezza desiderata*/
+    public static double calcolaValoreLunghezzaSeire(double runtime, String lunghezza){
         if(runtime==0)
             return 0.5;
         if(lunghezza.equals("corta"))
@@ -139,26 +139,8 @@ public class FunzioneFitness {
         }
         return 0.5;
     }
-    /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dal numero di stagioni massimo*/
-    public static double calcolaFitnessSeasons(int seasons, int max,String tipologia){
-        if(seasons==0 || tipologia.equals("MOVIE"))
-            return 0.5;
-        if(seasons <= max){
-            return 2;
-        }
-        return 0.5;
-    }
-    /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dal'intervallo di stagioni
-    desiderate*/
-    public static double calcolaFitnessSeasons(int seasons,int min, int max,String tipologia){
-        if(seasons==0 || tipologia.equals("MOVIE"))
-            return 0.5;
-        if(seasons <= max && seasons >= min)
-            return 2;
-        return 0.5;
-    }
-    /*Metodo che calcola il valore della funzione di fitness, su un film, dipendente dalla lunghezza desiderata*/
-    public static double calcolaFitnessLunghezzaFilm(double runtime, String lunghezza){
+    /*Metodo che calcola il valore, su un film, dipendente dalla lunghezza desiderata*/
+    public static double calcolaValoreLunghezzaFilm(double runtime, String lunghezza){
         if(lunghezza.equals("corta"))
             if(runtime<=CORTOMETRAGGIO){
                 return 3.0;
@@ -174,5 +156,23 @@ public class FunzioneFitness {
         }
         return 0.5;
     }
+    /*Metodo che calcola il valore, su una serie, dipendente dal numero di stagioni massimo*/
+    public static double calcolaValoreSeasons(int seasons, int max,String tipologia){
+        if(seasons==0 || tipologia.equals("MOVIE"))
+            return 0.5;
+        if(seasons <= max){
+            return 2;
+        }
+        return 0.5;
+    }
+    /*Metodo che calcola il valore, su una serie, dipendente dal'intervallo di stagioni
+    desiderate*/
+    public static double calcolaValoreSeasons(int seasons,int min, int max,String tipologia){
+        if(seasons==0 || tipologia.equals("MOVIE"))
+            return 0.5;
+        if(seasons <= max && seasons >= min)
+            return 2;
+        return 0.5;
+    }
+
 }
-// i.sort(new SortShowByFitness());

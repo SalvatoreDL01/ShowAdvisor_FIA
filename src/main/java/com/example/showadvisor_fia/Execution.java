@@ -23,10 +23,10 @@ public class Execution extends HttpServlet {
         ArrayList<Individuo> banca = new ArrayList<>();
 
         generi.add("fantasy");
-        generi.add("drama");
-        generi.add("thriller");
+        generi.add("european");
+        generi.add("documentation");
 
-        String tipo="MOVIE";
+        String tipo="SHOW";
         String runtime = "corta";
 
         Fitness fitness = new Fitness( generi, runtime, tipo,2,1);
