@@ -565,7 +565,7 @@
                 individuo = (Individuo) session.getAttribute("individuo");
                 for(Show s: individuo){
         %>
-        <li class="list-group-item" name ="result1" style="height: 100px">TITOLO:<%=s.getTitle()%>, DESCRIZIONE:<%=s.getDescription()%>, ANNO REALIZZAZIONE:<%=s.getRelease_year()%>, DURATA: <%=s.getRuntime()%>, GENERI: <%=s.getGenres()%>, PUNTEGGIO: <%=s.getScore()%></li>
+        <li class="list-group-item" name ="result1" style="height: 200px">TITOLO:<%=s.getTitle()%>, DESCRIZIONE:<%=s.getDescription()%>, ANNO REALIZZAZIONE:<%=s.getRelease_year()%>, DURATA: <%=s.getRuntime()%>, GENERI: <%=s.getGenres()%>,<%if(session.getAttribute("tipo").equals("SERIE")){%>NUMERO STAGIONI: <%=s.getSeasons()%>, <%}%> PUNTEGGIO: <%=s.getScore()%></li>
         <%}}%>
     </ul>
 </div>

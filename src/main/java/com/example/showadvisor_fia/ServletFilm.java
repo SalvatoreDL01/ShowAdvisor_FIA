@@ -57,6 +57,7 @@ public class ServletFilm extends HttpServlet {
         System.out.println("migliore\n"+popolazione.getLista().get(0));
         HttpSession session = request.getSession();
         session.setAttribute("individuo", popolazione.getLista().get(0));
+        session.setAttribute("tipo", "FILM");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
         requestDispatcher.forward(request, response);
     }
