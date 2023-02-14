@@ -50,9 +50,10 @@ public class ServletSerie extends HttpServlet{
 
             }
             sel.setP(popolazione);
-            sel.selezione(fitness);
+            popolazione.setLista(sel.selezione(fitness));
             HttpSession session = request.getSession();
             session.setAttribute("tipo", "SERIE");
+            session.setAttribute("individuo",popolazione.getLista().get(0));
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
             requestDispatcher.forward(request, response);
         }

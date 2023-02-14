@@ -39,7 +39,7 @@ public class ServletFilm extends HttpServlet {
         Fitness fitness = new Fitness( generi, durata, "MOVIE", 0, 0);
         Selezione sel = new Selezione();
 
-        for(int i=0;i<1000;i++){
+        for(int i=0;i<5000;i++){
             sel.setP(popolazione);
             ArrayList<Individuo> l= sel.selezione(fitness);
             popolazione.setLista(l);
@@ -50,6 +50,7 @@ public class ServletFilm extends HttpServlet {
         sel.selezione(fitness);
         HttpSession session = request.getSession();
         session.setAttribute("tipo", "FILM");
+        session.setAttribute("individuo",popolazione.getLista().get(0));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
         requestDispatcher.forward(request, response);
     }
