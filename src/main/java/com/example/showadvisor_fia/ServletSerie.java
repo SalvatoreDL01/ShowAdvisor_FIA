@@ -1,9 +1,12 @@
 package com.example.showadvisor_fia;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.awt.*;
 import java.io.IOException;
@@ -20,7 +23,7 @@ public class ServletSerie extends HttpServlet{
             message = "Hello World!";
         }
 
-        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
             Popolazione popolazione = new Popolazione(8);
             popolazione.inizializza("MOVIE");
@@ -39,7 +42,7 @@ public class ServletSerie extends HttpServlet{
                 for(String s : checkBox)
                     generi.add(s);
 
-            Fitness fitness = new Fitness( generi, durata, tipo,maxSeason);
+            Fitness fitness = new Fitness( generi, durata, tipo,maxSeason, minSeason);
             Selezione sel = new Selezione();
 
             for(int i=0;i<1000;i++){
@@ -57,7 +60,12 @@ public class ServletSerie extends HttpServlet{
 
             }
             sel.setP(popolazione);
+            HttpSession session = request.getSession();
+            session.setAttribute("individuo", popolazione.getLista().get(0));
             System.out.println("migliore\n"+popolazione.getLista().get(0));
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            requestDispatcher.forward(request, response);
+
         }
 
         public static String convertiDurata(int valore){

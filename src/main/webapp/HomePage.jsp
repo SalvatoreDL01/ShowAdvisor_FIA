@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.showadvisor_fia.Show" %>
+<%@ page import="com.example.showadvisor_fia.Individuo" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 
@@ -558,13 +559,14 @@
 
 <div class="risultati">
     <ul class="list-group">
-        <li class="list-group-item" name ="result1"></li>
-        <li class="list-group-item" name ="result2"></li>
-        <li class="list-group-item" name ="result3"></li>
-        <li class="list-group-item" name ="result4"></li>
-        <li class="list-group-item" name ="result5"></li>
-        <li class="list-group-item" name ="result6"></li>
-        <li class="list-group-item" name ="result7"></li>
+        <%
+            Individuo individuo = null;
+            if(session.getAttribute("individuo") != null){
+                individuo = (Individuo) session.getAttribute("individuo");
+                for(Show s: individuo){
+        %>
+        <li class="list-group-item" name ="result1" style="height: 100px">TITOLO:<%=s.getTitle()%>, DESCRIZIONE:<%=s.getDescription()%>, ANNO REALIZZAZIONE:<%=s.getRelease_year()%>, DURATA: <%=s.getRuntime()%>, GENERI: <%=s.getGenres()%>, PUNTEGGIO: <%=s.getScore()%></li>
+        <%}}%>
     </ul>
 </div>
 
