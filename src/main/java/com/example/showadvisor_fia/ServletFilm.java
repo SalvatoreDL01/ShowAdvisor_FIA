@@ -19,9 +19,6 @@ public class ServletFilm extends HttpServlet {
 
     private String message;
 
-    public void init() {
-        message = "Hello World!";
-    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -48,16 +45,10 @@ public class ServletFilm extends HttpServlet {
             popolazione.setLista(l);
             GaUtility.crossOver(popolazione, fitness);
             GaUtility.mutazione(popolazione, fitness);
-            for(Individuo ind:l){
-                System.out.println(ind.getFitnessTotale());
-                System.out.println(ind);
-            }
-
         }
         sel.setP(popolazione);
-        System.out.println("migliore\n"+popolazione.getLista().get(0));
+        sel.selezione(fitness);
         HttpSession session = request.getSession();
-        session.setAttribute("individuo", popolazione.getLista().get(0));
         session.setAttribute("tipo", "FILM");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
         requestDispatcher.forward(request, response);

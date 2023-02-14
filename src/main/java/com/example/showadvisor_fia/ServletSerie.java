@@ -19,6 +19,7 @@ public class ServletSerie extends HttpServlet{
 
         private String message;
 
+
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
             Popolazione popolazione = new Popolazione(8);
@@ -41,23 +42,16 @@ public class ServletSerie extends HttpServlet{
             Selezione sel = new Selezione();
 
             for(int i=0;i<1000;i++){
-                System.out.println("fdbfuksri\n");
                 sel.setP(popolazione);
                 ArrayList<Individuo> l= sel.selezione(fitness);
                 popolazione.setLista(l);
-                System.out.println("popolazione size" + popolazione.getLista().size());
                 GaUtility.crossOver(popolazione, fitness);
                 GaUtility.mutazione(popolazione, fitness);
-                for(Individuo ind:l){
-                    System.out.println(ind.getFitnessTotale());
-                    System.out.println(ind);
-                }
 
             }
             sel.setP(popolazione);
-            System.out.println("migliore\n"+popolazione.getLista().get(0));
+            sel.selezione(fitness);
             HttpSession session = request.getSession();
-            session.setAttribute("individuo", popolazione.getLista().get(0));
             session.setAttribute("tipo", "SERIE");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
             requestDispatcher.forward(request, response);
