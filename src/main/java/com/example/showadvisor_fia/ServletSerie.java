@@ -1,9 +1,12 @@
 package com.example.showadvisor_fia;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.awt.*;
 import java.io.IOException;
@@ -16,14 +19,10 @@ public class ServletSerie extends HttpServlet{
 
         private String message;
 
-        public void init() {
-            message = "Hello World!";
-        }
-
-        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
             Popolazione popolazione = new Popolazione(8);
-            popolazione.inizializza("MOVIE");
+            popolazione.inizializza("SHOW");
             List<String> generi = new ArrayList<String>();
             ArrayList<Individuo> banca = new ArrayList<>();
 
@@ -57,6 +56,11 @@ public class ServletSerie extends HttpServlet{
             }
             sel.setP(popolazione);
             System.out.println("migliore\n"+popolazione.getLista().get(0));
+            HttpSession session = request.getSession();
+            session.setAttribute("individuo", popolazione.getLista().get(0));
+            session.setAttribute("tipo", "SERIE");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            requestDispatcher.forward(request, response);
         }
 
         public static String convertiDurata(int valore){
