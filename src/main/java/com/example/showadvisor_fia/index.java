@@ -19,6 +19,7 @@ public class index extends HttpServlet {
 
         Parser parser = new Parser();
 
+        HttpSession session = request.getSession();
         List<Show> serie = parser.getListFilm();
         List<Show> film = parser.getListSerie();
 
