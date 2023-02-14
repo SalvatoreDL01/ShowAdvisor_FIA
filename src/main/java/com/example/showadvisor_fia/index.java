@@ -17,14 +17,6 @@ public class index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Parser parser = new Parser();
-
-        HttpSession session = request.getSession();
-        List<Show> serie = parser.getListFilm();
-        List<Show> film = parser.getListSerie();
-
-        request.setAttribute("l",film);
-
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("HomePage.jsp");
         requestDispatcher.forward(request, response);
 

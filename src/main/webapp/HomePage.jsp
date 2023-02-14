@@ -264,8 +264,8 @@
                                         <select class="form-select" name = "durataSerie" id = "selezionaDurata" aria-label="Default select example">
                                             <option selected>Seleziona la durata desiderata</option>
                                             <option value="0">Corta (massimo 27 minuti)</option>
-                                            <option value="1">Media (tra 27 e 48 minuti)</option>
-                                            <option value="2">Lunga (minimo 44 minuti)</option>
+                                            <option value="1">Media (tra 27 e 43 minuti)</option>
+                                            <option value="2">Lunga (minimo 43 minuti)</option>
                                         </select>
                                     </div>
                                 </row>

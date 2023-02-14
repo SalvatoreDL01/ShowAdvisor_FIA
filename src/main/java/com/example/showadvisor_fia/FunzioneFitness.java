@@ -5,7 +5,7 @@ import java.util.List;
 public class FunzioneFitness {
 
     private final static double RUNTIMESERIECORTA = 27;
-    private final static double RUNTIMESERIELUNGA = 44;
+    private final static double RUNTIMESERIELUNGA = 43;
     private final static double CORTOMETRAGGIO = 80;
     private final static double LUNGOMETRAGGIO = 120;
     /*Metodo che calcola il valore della funzione di fitness, su una serie, dipendente dalla lunghezza desiderata*/

@@ -16,8 +16,8 @@ public class Selezione {
 
     public ArrayList<Individuo> selezione(Fitness f) {
         individui = p.getLista();
-       // for (Individuo i : individui)
-        //    FunzioneFitness.calcolaTotalFitness(f, i);
+       for (Individuo i : individui)
+           FunzioneFitness.calcolaTotalFitness(f, i);
         return orderByFitness(individui, f);
     }
 
