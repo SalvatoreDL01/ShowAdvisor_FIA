@@ -228,7 +228,7 @@ input[type="range"]::-moz-range-thumb{
     border-top-width: 0;
     opacity : 70%;
     height : 30px;
-    background-color: #b02a37;
+    background-color: #fff;
 }
 
 list-group-item:first-child {
@@ -237,13 +237,13 @@ list-group-item:first-child {
     border-top-width: 0;
     height : 30px;
     opacity : 70%;
-    background-color: #b02a37;
+    background-color: #fff;
 }
 
 .list-group-item {
     height : 30px;
     opacity : 70%;
-    background-color: #b02a37;
+    background-color: #fff;
     position: relative;
     display: block;
     padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
