@@ -47,7 +47,7 @@ public class ServletFilm extends HttpServlet {
             GaUtility.mutazione(popolazione, fitness);
         }
         sel.setP(popolazione);
-        sel.selezione(fitness);
+        popolazione.setLista(sel.selezione(fitness));
         HttpSession session = request.getSession();
         session.setAttribute("tipo", "FILM");
         session.setAttribute("individuo",popolazione.getLista().get(0));
