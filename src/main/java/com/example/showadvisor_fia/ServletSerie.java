@@ -41,7 +41,7 @@ public class ServletSerie extends HttpServlet{
             Fitness fitness = new Fitness( generi, durata, "SHOW",maxSeason, minSeason);
             Selezione sel = new Selezione();
 
-            for(int i=0;i<1000;i++){
+            for(int i=0;i<5000;i++){
                 sel.setP(popolazione);
                 ArrayList<Individuo> l= sel.selezione(fitness);
                 popolazione.setLista(l);
