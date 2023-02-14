@@ -32,14 +32,13 @@ public class ServletSerie extends HttpServlet{
             int maxSeason = Integer.parseInt(request.getParameter("maxSeason"));
 
             String durata = convertiDurata(durataIntero);
-            String tipo="SHOW";
             String[] checkBox = request.getParameterValues("generiSerie");
 
             if(checkBox != null && checkBox.length != 0)
                 for(String s : checkBox)
                     generi.add(s);
 
-            Fitness fitness = new Fitness( generi, durata, tipo,maxSeason);
+            Fitness fitness = new Fitness( generi, durata, "SHOW",maxSeason, minSeason);
             Selezione sel = new Selezione();
 
             for(int i=0;i<1000;i++){
@@ -63,7 +62,7 @@ public class ServletSerie extends HttpServlet{
         public static String convertiDurata(int valore){
             String durata = "errore";
 
-            if(valore != 1 && valore != 2 && valore != 0){
+            if(valore == 3){
                 Random r = new Random();
                 valore = r.nextInt(2-0+1) - 0;
             }

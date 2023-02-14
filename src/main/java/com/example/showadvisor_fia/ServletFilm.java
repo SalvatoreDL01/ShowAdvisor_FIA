@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @WebServlet(name = "ServletFilm", value = "/ServletFilm")
 public class ServletFilm extends HttpServlet {
@@ -35,7 +36,7 @@ public class ServletFilm extends HttpServlet {
             for(String s : checkBox)
                 generi.add(s);
 
-        Fitness fitness = new Fitness( generi, durata, "MOVIE", 0);
+        Fitness fitness = new Fitness( generi, durata, "MOVIE", 0, 0);
         Selezione sel = new Selezione();
 
         for(int i=0;i<1000;i++){
@@ -56,6 +57,12 @@ public class ServletFilm extends HttpServlet {
 
     public static String convertiDurata(int valore){
         String durata = "errore";
+
+        if(valore == 3){
+            Random r = new Random();
+            valore = r.nextInt(2-0+1) - 0;
+        }
+
 
         if(valore == 0)
             durata = "corta";
