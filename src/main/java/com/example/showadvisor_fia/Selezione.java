@@ -13,16 +13,48 @@ public class Selezione {
     private ArrayList<Individuo> individui;
     private Popolazione p;
 
+    public ArrayList<Individuo> selezione(Fitness f){
+        individui = p.getLista();
+        for(Individuo i : individui){
+            FunzioneFitness.calcolaTotalFitness(f, i);
+        }
+        return this.orderByFitness();
+    }
 
-    public ArrayList<Individuo> selezione(Fitness f) {
+    private ArrayList<Individuo> orderByFitness(){
+
+        ArrayList<Double> valori = new ArrayList<>();
+        ArrayList<Individuo> ordinata = new ArrayList<>();
+
+        for(int i = 0; i<individui.size(); i++)
+            valori.add( i, individui.get(i).getFitnessTotale());
+        Collections.sort(valori);
+        int i = 0;
+        int j = individui.size();
+        int size = 0;
+        while(j != i){
+            for(Individuo individuo : individui){
+                System.out.println("valore di fitness" + individuo.getFitnessTotale() + " individuo : " + individuo);
+                if(individuo.getFitnessTotale() == valori.get(i)) {
+                    ordinata.add(individuo);
+                    size++;
+                }
+            }
+            i++;
+        }
+        return ordinata;
+    }
+
+
+    public ArrayList<Individuo> selezioneAntica(Fitness f) {
         individui = p.getLista();
        for (Individuo i : individui)
            FunzioneFitness.calcolaTotalFitness(f, i);
-        return orderByFitness(individui, f);
+        return orderByFitnessAntica(individui, f);
     }
 
     //funzione che ordina la lista in base al valore di ogni individuo
-    public static ArrayList<Individuo> orderByFitness(ArrayList<Individuo> individui, Fitness f) {
+    public static ArrayList<Individuo> orderByFitnessAntica(ArrayList<Individuo> individui, Fitness f) {
 
         ArrayList<Individuo> ordinata = new ArrayList<>();
         individui.sort(new SortIndividuiByNGeneri());
@@ -34,8 +66,7 @@ public class Selezione {
                 //selezione per generi
                 if (numeroPrimi == i.getnShowGeneri()) {
                     subList.add(i);
-                }
-                else {
+                } else {
                     numeroPrimi = i.getnShowGeneri();
                     break;
                 }
@@ -87,7 +118,7 @@ public class Selezione {
                     break;
 
         }
-        while(ordinata.size() < 4) ;
+        while (ordinata.size() < 4);
 
         return ordinata;
 

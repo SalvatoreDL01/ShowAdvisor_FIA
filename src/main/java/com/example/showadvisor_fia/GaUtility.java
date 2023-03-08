@@ -90,7 +90,6 @@ public class GaUtility {
 
         for(Individuo ind: p.getLista())
             FunzioneFitness.calcolaTotalFitness(f, ind);
-
         return p;
 
     }

@@ -89,6 +89,7 @@ public class FunzioneFitness {
         i.setnShowGeneri(0.0);
         for(Show s: i){
             calcolaIndividualFitness(i,s,f);
+
         }
         //fa la media dei generi rispecchiati sui vari show dell'individuo
         i.setnShowGeneri(i.getnShowGeneri()/i.size());
