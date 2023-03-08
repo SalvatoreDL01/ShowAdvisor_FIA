@@ -34,7 +34,7 @@ public class Execution extends HttpServlet {
         for(int i=0;i<1000;i++){
             System.out.println("fdbfuksri\n");
         sel.setP(popolazione);
-        ArrayList<Individuo> l= sel.selezioneAntica(fitness);
+        ArrayList<Individuo> l= sel.selezione(fitness);
         popolazione.setLista(l);
         System.out.println("popolazione size" + popolazione.getLista().size());
         GaUtility.crossOver(popolazione, fitness);

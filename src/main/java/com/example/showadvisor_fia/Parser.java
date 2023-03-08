@@ -99,6 +99,15 @@ public class Parser {
         return nScore;
     }
 
+    public HashMap<Double, Integer> contaRunFilm() {
+
+        for (Show s : list) {
+            if (!nScore.containsKey(s.getScore()))
+                nScore.put(s.getScore(), 0);
+            nScore.put(s.getScore(), nScore.get((s.getScore())) + 1);
+        }
+        return nScore;
+    }
 }
 
 

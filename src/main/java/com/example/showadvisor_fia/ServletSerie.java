@@ -43,14 +43,14 @@ public class ServletSerie extends HttpServlet{
 
             for(int i=0;i<5000;i++){
                 sel.setP(popolazione);
-                ArrayList<Individuo> l= sel.selezioneAntica(fitness);
+                ArrayList<Individuo> l= sel.selezione(fitness);
                 popolazione.setLista(l);
                 GaUtility.crossOver(popolazione, fitness);
                 GaUtility.mutazione(popolazione, fitness);
 
             }
             sel.setP(popolazione);
-            popolazione.setLista(sel.selezioneAntica(fitness));
+            popolazione.setLista(sel.selezione(fitness));
             HttpSession session = request.getSession();
             session.setAttribute("tipo", "SERIE");
             session.setAttribute("individuo",popolazione.getLista().get(0));
