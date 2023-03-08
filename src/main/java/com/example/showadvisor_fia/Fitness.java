@@ -9,6 +9,7 @@ public class Fitness {
     private int max;
     private int min;
 
+
     public Fitness(List<String> generi, String runtimeDesiderato, String tipologia,int max,int min) {
         this.generi = generi;
         this.runtimeDesiderato = runtimeDesiderato;

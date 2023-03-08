@@ -17,6 +17,7 @@ public class Parser {
 
     private HashMap<String, Integer> nSeason = new HashMap<>();
 
+    private HashMap<Double, Integer> nScore = new HashMap<>();
     private static Show[] list = null;
 
     private static List<Show> listFilm = new ArrayList<Show>();
@@ -52,6 +53,9 @@ public class Parser {
 
     public HashMap<String, Integer> contaGeneri() {
         boolean f = false;
+
+        List serie = new ArrayList();
+
         for (Show s : list) {
             char[] g = s.getGenres().toCharArray();
             int l = g.length, i = 0;
@@ -83,6 +87,16 @@ public class Parser {
             nSeason.put(s.getSeasons(), nSeason.get((s.getSeasons())) + 1);
         }
         return nSeason;
+    }
+
+    public HashMap<Double, Integer> contaScore() {
+
+        for (Show s : list) {
+            if (!nScore.containsKey(s.getScore()))
+                nScore.put(s.getScore(), 0);
+            nScore.put(s.getScore(), nScore.get((s.getScore())) + 1);
+        }
+        return nScore;
     }
 
 }

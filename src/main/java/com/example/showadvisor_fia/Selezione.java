@@ -13,16 +13,30 @@ public class Selezione {
     private ArrayList<Individuo> individui;
     private Popolazione p;
 
+    public ArrayList<Individuo> selezione(Fitness f){
 
-    public ArrayList<Individuo> selezione(Fitness f) {
+        individui = p.getLista();
+        for(Individuo i : individui){
+            FunzioneFitness.calcolaTotalFitness
+        }
+
+    }
+
+
+
+
+
+
+
+    public ArrayList<Individuo> selezioneAntica(Fitness f) {
         individui = p.getLista();
        for (Individuo i : individui)
            FunzioneFitness.calcolaTotalFitness(f, i);
-        return orderByFitness(individui, f);
+        return orderByFitnessAntica(individui, f);
     }
 
     //funzione che ordina la lista in base al valore di ogni individuo
-    public static ArrayList<Individuo> orderByFitness(ArrayList<Individuo> individui, Fitness f) {
+    public static ArrayList<Individuo> orderByFitnessAntica(ArrayList<Individuo> individui, Fitness f) {
 
         ArrayList<Individuo> ordinata = new ArrayList<>();
         individui.sort(new SortIndividuiByNGeneri());

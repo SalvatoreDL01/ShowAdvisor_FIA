@@ -227,6 +227,27 @@
                                                 </div>
                                             </div>
                                             <div class="col-4">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="history" name = "generiFilm" id="historyFilm" >
+                                                    <label class="form-check-label" for="historyFilm">
+                                                        History
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </row>
+
+                                <row>
+                                    <div class="container text-center">
+                                        <div class="row justify-content-start">
+                                            <div class="col-4">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="reality" name = "generiFilm" id="realityFilm" >
+                                                    <label class="form-check-label" for="realityFilm">
+                                                        Reality
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -447,6 +468,28 @@
                                                 </div>
                                             </div>
                                             <div class="col-4">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" value="history" name = "generiFilm" id="historySerie" >
+                                                        <label class="form-check-label" for="historySerie">
+                                                            History
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </row>
+
+                                <row>
+                                    <div class="container text-center">
+                                        <div class="row justify-content-start">
+                                            <div class="col-4">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="reality" name = "generiFilm" id="realitySerie" >
+                                                    <label class="form-check-label" for="realitySerie">
+                                                        Reality
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
