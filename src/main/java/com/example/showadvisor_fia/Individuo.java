@@ -2,38 +2,75 @@ package com.example.showadvisor_fia;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 /*Classe che ha il compito di costruire un individuo */
 public class Individuo extends ArrayList<Show> {
 
     private double fitnessTotale;
-    //fitness multi obiettivo
-    private Double nShowGeneri;
-    private Integer sSeasonsCorrette;
-    private Integer nShowRuntime;
-    private Double scoreMedio;
+    private int nShow;
+
+    public Individuo(int nShow, int fitnessTotale){
+        this.nShow = nShow;
+        this.fitnessTotale = fitnessTotale;
+    }
 
     public Individuo(int initialCapacity) {
         super(initialCapacity);
     }
 
     public Individuo() {
-        nShowGeneri=0.0;
-        nShowRuntime=0;
-        sSeasonsCorrette=0;
-        scoreMedio=0.0;
+        super();
     }
 
-    public Individuo(Collection c) {
+    public Individuo(Collection<? extends Show> c) {
         super(c);
     }
 
-    public double getFitnessTotale() {
-        return fitnessTotale;
+    //metodo per creare un individuo in modo casuale
+    public void crea(String tipo) throws IOException {
+        int x;
+        if(tipo.equals("MOVIE"))
+            x=2444;
+        else
+            x=722;
+
+        Random random = new Random();
+        Show individuo;
+        List<Show> showList = Parser.getInstance(tipo);
+        int i, n;
+        for(i=0; i<nShow; i++){
+            n = random.nextInt(x);
+            individuo = showList.get(n);
+            while(this.contains(individuo)){
+                n = random.nextInt(x);
+                individuo = showList.get(n);
+            }
+            this.add(individuo);
+        }
+
     }
 
-    public void setFitnessTotale(double fitnessTotale) {
-        this.fitnessTotale = fitnessTotale;
+    public String toString(){
+        String str = "";
+        for(Show s: this)
+            str += s.toString() + "\n";
+        return  str;
+    }
+
+    //metodi sovrascritti di un ogetto List
+    @Override
+    public void trimToSize() {
+        super.trimToSize();
+    }
+
+    @Override
+    public void ensureCapacity(int minCapacity) {
+        super.ensureCapacity(minCapacity);
     }
 
     @Override
@@ -72,7 +109,7 @@ public class Individuo extends ArrayList<Show> {
     }
 
     @Override
-    public Object[] toArray(Object[] a) {
+    public <T> T[] toArray(T[] a) {
         return super.toArray(a);
     }
 
@@ -83,54 +120,17 @@ public class Individuo extends ArrayList<Show> {
 
     @Override
     public Show set(int index, Show element) {
-        if(index<5)
-            return super.set(index, element);
-        return null;
-    }
-
-    public Double getnShowGeneri() {
-        return nShowGeneri;
-    }
-
-    public void setnShowGeneri(Double nShowGeneri) {
-        this.nShowGeneri = nShowGeneri;
-    }
-
-    public Integer getnShowRuntime() {
-        return nShowRuntime;
-    }
-
-    public void setnShowRuntime(Integer nShowRuntime) {
-        this.nShowRuntime = nShowRuntime;
-    }
-
-    public Double getScoreMedio() {
-        return scoreMedio;
-    }
-
-    public void setScoreMedio(Double scoreMedio) {
-        this.scoreMedio = scoreMedio;
-    }
-
-    public Integer getsSeasonsCorrette() {
-        return sSeasonsCorrette;
-    }
-
-    public void setsSeasonsCorrette(Integer sSeasonsCorrette) {
-        this.sSeasonsCorrette = sSeasonsCorrette;
+        return super.set(index, element);
     }
 
     @Override
-    public boolean add(Show o) {
-        if(this.size()<6)
-            return super.add(o);
-        return false;
+    public boolean add(Show show) {
+        return super.add(show);
     }
 
     @Override
     public void add(int index, Show element) {
-        if(this.size()<6 && index <5)
-            super.add(index, element);
+        super.add(index, element);
     }
 
     @Override
@@ -138,13 +138,14 @@ public class Individuo extends ArrayList<Show> {
         return super.remove(index);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
 
-    public boolean equals(Individuo o) {
-        for(Show s:o){
-            if(!this.contains(s))
-                return false;
-        }
-        return true;
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
     @Override
@@ -158,37 +159,98 @@ public class Individuo extends ArrayList<Show> {
     }
 
     @Override
-    public void sort(Comparator c) {
+    public boolean addAll(Collection<? extends Show> c) {
+        return super.addAll(c);
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends Show> c) {
+        return super.addAll(index, c);
+    }
+
+    @Override
+    protected void removeRange(int fromIndex, int toIndex) {
+        super.removeRange(fromIndex, toIndex);
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return super.removeAll(c);
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return super.retainAll(c);
+    }
+
+    @Override
+    public ListIterator<Show> listIterator(int index) {
+        return super.listIterator(index);
+    }
+
+    @Override
+    public ListIterator<Show> listIterator() {
+        return super.listIterator();
+    }
+
+    @Override
+    public Iterator<Show> iterator() {
+        return super.iterator();
+    }
+
+    @Override
+    public List<Show> subList(int fromIndex, int toIndex) {
+        return super.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public void forEach(Consumer<? super Show> action) {
+        super.forEach(action);
+    }
+
+    @Override
+    public Spliterator<Show> spliterator() {
+        return super.spliterator();
+    }
+
+    @Override
+    public boolean removeIf(Predicate<? super Show> filter) {
+        return super.removeIf(filter);
+    }
+
+    @Override
+    public void replaceAll(UnaryOperator<Show> operator) {
+        super.replaceAll(operator);
+    }
+
+    @Override
+    public void sort(Comparator<? super Show> c) {
         super.sort(c);
     }
 
-    public void crea(String tipo) throws IOException {
-        int x;
-        if(tipo.equals("MOVIE"))
-            x=2444;
-        else
-            x=722;
-
-        Random random = new Random();
-        Show individuo;
-        List<Show> showList = Parser.getInstance(tipo);
-        int i, n;
-        for(i=0; i<5; i++){
-            n = random.nextInt(x);
-            individuo = showList.get(n);
-            while(this.contains(individuo)){
-                n = random.nextInt(x);
-                individuo = showList.get(n);
-            }
-            this.add(individuo);
-        }
-
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return super.containsAll(c);
     }
 
-    public String toString(){
-        String str = "";
-        for(Show s: this)
-            str += s.toString() + "\n";
-        return  str;
+    @Override
+    public <T> T[] toArray(IntFunction<T[]> generator) {
+        return super.toArray(generator);
     }
+
+    @Override
+    public Stream<Show> stream() {
+        return super.stream();
+    }
+
+    @Override
+    public Stream<Show> parallelStream() {
+        return super.parallelStream();
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
 }

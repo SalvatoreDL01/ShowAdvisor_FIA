@@ -9,7 +9,13 @@ import java.util.Random;
 
 public class GaUtility {
 
-    static public Popolazione crossOver(Popolazione p, Fitness f){
+    private int sizeMatingPool;
+
+    public GaUtility(int sizeMatingPool, String tipo){
+        this.sizeMatingPool = sizeMatingPool;
+    }
+
+    public Popolazione crossOver(Popolazione p, Fitness f){
         Random random = new Random();
         Popolazione popolazione = new Popolazione(4);
         for(Individuo i: p.getLista())
