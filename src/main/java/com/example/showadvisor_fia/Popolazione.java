@@ -7,8 +7,6 @@ public class Popolazione{
 
     private ArrayList<Individuo> lista;
     private int nElementi;
-    //Da aggiustare
-
 
     public Popolazione(int nElementi) {
         lista = new ArrayList<>();
@@ -31,6 +29,7 @@ public class Popolazione{
         this.nElementi = nElementi;
     }
 
+    //metodo per inizializzare una popolazione di nElementi individui chiamando il metodo crea per ogni individuo
     public void inizializza(String tipo) throws IOException {
         for(int i=0; i<nElementi;){
             Individuo individuo = new Individuo();
@@ -49,19 +48,4 @@ public class Popolazione{
         return str;
     }
 
-
-    /*
-    public void inizializza(){
-
-        int i = 0;
-        for(i=0; i<nElementi; i++){
-            lista.add(new Individuo(6));
-        }
-
-        for(Individuo e: lista)
-        //deve creare una popolazione. quindi x individui(liste di 5 show)
-            e.crea();
-
-    }
-*/
 }

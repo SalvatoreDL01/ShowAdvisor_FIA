@@ -9,48 +9,48 @@ import java.util.Random;
 
 public class GaUtility {
 
-    static public Popolazione crossOver(Popolazione p, Fitness f){
+    private int sizeMatingPool;
+    private ArrayList<Show> listaTitoli;
+    private int elementi;
+    private Popolazione popolazione;
+
+    public GaUtility(int sizeMatingPool, String tipo, Popolazione p) throws IOException {
+        this.sizeMatingPool = sizeMatingPool;
+        if(tipo.equals("MOVIE")) {
+            listaTitoli = (ArrayList<Show>) new Parser().getListFilm();
+            elementi = 2444;
+        }
+        else {
+            listaTitoli = (ArrayList<Show>) new Parser().getListSerie();
+            elementi = 722;
+        }
+        popolazione = p;
+    }
+
+    public Popolazione crossOver(Fitness f){
         Random random = new Random();
-        Popolazione popolazione = new Popolazione(4);
-        for(Individuo i: p.getLista())
-            popolazione.getLista().add(i);
-        System.out.println(popolazione.getLista().size());
-        Individuo i1 = popolazione.getLista().remove(random.nextInt(3));
-        Individuo i2 = popolazione.getLista().remove(random.nextInt(2));
-        Individuo i3 = popolazione.getLista().remove(0);
-        Individuo i4 = popolazione.getLista().remove(0);
-        Individuo i5 = new Individuo();
-        Individuo i6 = new Individuo();
-        Individuo i7 = new Individuo();
-        Individuo i8 = new Individuo();
-        int point1 = random.nextInt(i1.size()-1), point2 = random.nextInt(i1.size()-1);
-        for(int i=0; i<5; i++){
-            if(i<point1){
-                i5.add(i1.get(i));
-                i6.add(i2.get(i));
-            }//p
-            else{
-                i5.add(i2.get(i));
-                i6.add(i1.get(i));
+        int i;
+        for(i=0; i<((popolazione.getnElementi()-sizeMatingPool)/2)-1; i++){
+            Individuo i1 = new Individuo();
+            Individuo i2 = new Individuo();
+            Individuo iCross1 = popolazione.getLista().get(sizeMatingPool);
+            Individuo iCross2 = popolazione.getLista().get(sizeMatingPool);
+            int singlePoint = random.nextInt(popolazione.getLista().get(0).size());
+            int j;
+            for(j=0; j<popolazione.getLista().get(0).size()-1; j++){
+                if(j < singlePoint){
+                    i1.add(iCross1.get(j));
+                    i2.add(iCross2.get(j));
+                }
+                else{
+                    i1.add(iCross2.get(j));
+                    i2.add(iCross1.get(j));
+                }
             }
+            popolazione.getLista().add(i1);
+            popolazione.getLista().add(i2);
         }
-        for(int i=0; i<5; i++){
-            if(i<point2){
-                i7.add(i2.get(i));
-                i8.add(i3.get(i));
-            }
-            else{
-                i7.add(i3.get(i));
-                i8.add(i2.get(i));
-            }
-        }
-        p.getLista().add(i5);
-        p.getLista().add(i6);
-        p.getLista().add(i7);
-        p.getLista().add(i8);
-        for(Individuo ind: p.getLista())
-            FunzioneFitness.calcolaTotalFitness(f, ind);
-        return p;
+        return popolazione;
     }
 
     static public Popolazione mutazione(Popolazione p, Fitness f) throws IOException {
