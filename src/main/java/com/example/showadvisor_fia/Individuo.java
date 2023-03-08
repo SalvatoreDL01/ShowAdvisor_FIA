@@ -55,6 +55,23 @@ public class Individuo extends ArrayList<Show> {
 
     }
 
+    //getter and setter
+    public double getFitnessTotale() {
+        return fitnessTotale;
+    }
+
+    public void setFitnessTotale(double fitnessTotale) {
+        this.fitnessTotale = fitnessTotale;
+    }
+
+    public int getnShow() {
+        return nShow;
+    }
+
+    public void setnShow(int nShow) {
+        this.nShow = nShow;
+    }
+
     public String toString(){
         String str = "";
         for(Show s: this)
