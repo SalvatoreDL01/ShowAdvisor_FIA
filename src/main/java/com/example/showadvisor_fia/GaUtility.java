@@ -29,23 +29,28 @@ public class GaUtility {
 
     public Popolazione crossOver(Fitness f){
         Random random = new Random();
-        Individuo i1 = null;
-        Individuo i2 = null;
         int i;
         for(i=0; i<((popolazione.getnElementi()-sizeMatingPool)/2)-1; i++){
+            Individuo i1 = new Individuo();
+            Individuo i2 = new Individuo();
             Individuo iCross1 = popolazione.getLista().get(sizeMatingPool);
             Individuo iCross2 = popolazione.getLista().get(sizeMatingPool);
             int singlePoint = random.nextInt(popolazione.getLista().get(0).size());
             int j;
             for(j=0; j<popolazione.getLista().get(0).size()-1; j++){
                 if(j < singlePoint){
-                    //
+                    i1.add(iCross1.get(j));
+                    i2.add(iCross2.get(j));
                 }
                 else{
-                    //
+                    i1.add(iCross2.get(j));
+                    i2.add(iCross1.get(j));
                 }
             }
+            popolazione.getLista().add(i1);
+            popolazione.getLista().add(i2);
         }
+        return popolazione;
     }
 
     static public Popolazione mutazione(Popolazione p, Fitness f) throws IOException {
