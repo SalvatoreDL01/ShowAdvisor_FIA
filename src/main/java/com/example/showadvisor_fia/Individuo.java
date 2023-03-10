@@ -11,6 +11,20 @@ import java.util.stream.Stream;
 /*Classe che ha il compito di costruire un individuo */
 public class Individuo extends ArrayList<Show> {
 
+    /* private List<String> generi;
+    private String runtimeDesiderato;
+    private String tipologia;
+    private int max;
+    private int min;
+
+
+    public Fitness(List<String> generi, String runtimeDesiderato, String tipologia,int max,int min) {
+        this.generi = generi;
+        this.runtimeDesiderato = runtimeDesiderato;
+        this.tipologia = tipologia;
+        this.max = max;
+        this.min = min;
+    }*/
     private double fitnessTotale;
     private int nShow;
 
@@ -53,6 +67,23 @@ public class Individuo extends ArrayList<Show> {
             this.add(individuo);
         }
 
+    }
+
+    //getter and setter
+    public double getFitnessTotale() {
+        return fitnessTotale;
+    }
+
+    public void setFitnessTotale(double fitnessTotale) {
+        this.fitnessTotale = fitnessTotale;
+    }
+
+    public int getnShow() {
+        return nShow;
+    }
+
+    public void setnShow(int nShow) {
+        this.nShow = nShow;
     }
 
     public String toString(){
