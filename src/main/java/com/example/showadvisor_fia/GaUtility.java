@@ -5,20 +5,44 @@ import java.io.IOException;
 import java.util.*;
 
 public class GaUtility {
-    private int sizeMatingPool;
-    private ArrayList<Show> listaTitoli;
-    private int elementi;
-    private Popolazione popolazione;
+    private int sizeMatingPool, elementi;
+    private Fitness fitness;
+    private String tipo;
 
-    public GaUtility(int sizeMatingPool,String tipo, Popolazione p) throws IOException {
+    public GaUtility(int sizeMatingPool,String tipo, Fitness f) throws IOException {
         this.sizeMatingPool = sizeMatingPool;
         if(tipo.equals("MOVIE"))
             elementi = 2444;
         else
             elementi = 722;
-        popolazione = p;
+        this.fitness = f;
+        this.tipo = tipo;
     }
 
+    public void mutazione(Individuo i) throws IOException {
+        int n, posizionePeggiore = 0;
+        double valorePeggiore = fitness.fitnessShow(i.get(0));
+        //ricerca dell'elemmento peggiore e salvataggio della sua posizione nell'individuo
+        for(n=0; n<i.size(); n++){
+            //System.out.println(fitness.fitnessShow(i.get(n)));
+            if(fitness.fitnessShow(i.get(n)) < valorePeggiore){
+                valorePeggiore = fitness.fitnessShow(i.get(n));
+                posizionePeggiore = n;
+            }
+        }
+        Random random = new Random();
+        List<Show> showList = Parser.getInstance(tipo);
+        i.set(posizionePeggiore, showList.get(random.nextInt(elementi)));
+        fitness.calcolaFitness(i);
+    }
+
+    public void mutaPopolazione(Popolazione p) throws IOException {
+        for(Individuo i: p.getLista()){
+            this.mutazione(i);
+        }
+    }
+
+    /*
     public Popolazione crossOver(Fitness f){
         Random random = new Random();
         int i;
@@ -45,9 +69,11 @@ public class GaUtility {
         return popolazione;
     }
 
-    public Popolazione mutazione(Fitness f) throws IOException {
+     */
+
+    /*public Popolazione mutazione(Fitness f) throws IOException {
         int x = 0;
-        if(f.getTipo().equals("MOVIE"))
+        if(tipo.equals("MOVIE"))
             //numero di film nel dataset
             x = 2444;
         else
@@ -88,6 +114,10 @@ public class GaUtility {
     }
 
 
+
+
+
+
     public ArrayList<Individuo> selezione(Fitness f){
         for(Individuo i : popolazione.getLista()){
             f.calcolaFitness(i);
@@ -119,4 +149,6 @@ public class GaUtility {
         }
         return ordinata;
     }
+
+     */
 }

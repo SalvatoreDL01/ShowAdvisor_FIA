@@ -6,11 +6,12 @@ import java.util.ArrayList;
 public class Popolazione{
 
     private ArrayList<Individuo> lista;
-    private int nElementi;
+    private int numIndividui, numShow;
 
-    public Popolazione(int nElementi) {
+    public Popolazione(int numIndividui, int numShow) {
         lista = new ArrayList<>();
-        this.nElementi = nElementi;
+        this.numIndividui = numIndividui;
+        this.numShow = numShow;
     }
 
     public ArrayList<Individuo> getLista() {
@@ -21,18 +22,10 @@ public class Popolazione{
         this.lista = lista;
     }
 
-    public int getnElementi() {
-        return nElementi;
-    }
-
-    public void setnElementi(int nElementi) {
-        this.nElementi = nElementi;
-    }
-
     //metodo per inizializzare una popolazione di nElementi individui chiamando il metodo crea per ogni individuo
     public void inizializza(String tipo) throws IOException {
-        for(int i=0; i<nElementi;){
-            Individuo individuo = new Individuo();
+        for(int i=0; i<numIndividui;){
+            Individuo individuo = new Individuo(numShow, 0);
             individuo.crea(tipo);
             if(!lista.contains(individuo)){
                 lista.add(individuo);
