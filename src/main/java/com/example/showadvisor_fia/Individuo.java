@@ -11,12 +11,12 @@ import java.util.stream.Stream;
 /*Classe che ha il compito di costruire un individuo */
 public class Individuo extends ArrayList<Show> {
 
-    /* private List<String> generi;
+    private List<String> generi;
     private String runtimeDesiderato;
     private String tipologia;
     private int max;
     private int min;
-
+/*
 
     public Fitness(List<String> generi, String runtimeDesiderato, String tipologia,int max,int min) {
         this.generi = generi;

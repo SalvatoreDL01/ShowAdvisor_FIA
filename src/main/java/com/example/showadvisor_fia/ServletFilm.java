@@ -21,11 +21,11 @@ public class ServletFilm extends HttpServlet {
 
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-/*
-        Popolazione popolazione = new Popolazione(8);
+
+        //raccolta dati dalla jsp
+        Popolazione popolazione = new Popolazione(50);
         popolazione.inizializza("MOVIE");
-        List<String> generi = new ArrayList<String>();
-        ArrayList<Individuo> banca = new ArrayList<>();
+        ArrayList<String> generi = new ArrayList<String>();
 
         int durataIntero = Integer.parseInt(request.getParameter("durataFilm"));
 
@@ -36,18 +36,17 @@ public class ServletFilm extends HttpServlet {
             for(String s : checkBox)
                 generi.add(s);
 
-        Fitness fitness = new Fitness( generi, durata, "MOVIE", 0, 0);
-        Selezione sel = new Selezione();
+
+        Fitness fitness = new Fitness("MOVIE",0,0, generi, durata);
+        GaUtility ga = new GaUtility(30, "MOVIE", popolazione);
 
         for(int i=0;i<5000;i++){
-            sel.setP(popolazione);
-            ArrayList<Individuo> l= sel.selezioneAntica(fitness);
+            ArrayList<Individuo> l= ga.selezione(fitness);
             popolazione.setLista(l);
-            GaUtility.crossOver(popolazione, fitness);
-            GaUtility.mutazione(popolazione, fitness);
+            ga.crossOver(fitness);
+            ga.mutazione(fitness);
         }
-        sel.setP(popolazione);
-        popolazione.setLista(sel.selezioneAntica(fitness));
+        popolazione.setLista(ga.selezione(fitness));
         HttpSession session = request.getSession();
         session.setAttribute("tipo", "FILM");
         session.setAttribute("individuo",popolazione.getLista().get(0));
@@ -63,7 +62,6 @@ public class ServletFilm extends HttpServlet {
             valore = r.nextInt(2-0+1) - 0;
         }
 
-
         if(valore == 0)
             durata = "corta";
         else
@@ -76,6 +74,6 @@ public class ServletFilm extends HttpServlet {
     }
 
     public void destroy() {
-    */}
+    }
 
 }

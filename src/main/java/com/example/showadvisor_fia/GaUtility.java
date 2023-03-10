@@ -2,28 +2,20 @@ package com.example.showadvisor_fia;
 
 import javax.swing.text.html.HTMLDocument;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class GaUtility {
-/*
     private int sizeMatingPool;
     private ArrayList<Show> listaTitoli;
     private int elementi;
     private Popolazione popolazione;
 
-    public GaUtility(int sizeMatingPool, String tipo, Popolazione p) throws IOException {
+    public GaUtility(int sizeMatingPool,String tipo, Popolazione p) throws IOException {
         this.sizeMatingPool = sizeMatingPool;
-        if(tipo.equals("MOVIE")) {
-            listaTitoli = (ArrayList<Show>) new Parser().getListFilm();
+        if(tipo.equals("MOVIE"))
             elementi = 2444;
-        }
-        else {
-            listaTitoli = (ArrayList<Show>) new Parser().getListSerie();
+        else
             elementi = 722;
-        }
         popolazione = p;
     }
 
@@ -53,19 +45,19 @@ public class GaUtility {
         return popolazione;
     }
 
-    static public Popolazione mutazione(Popolazione p, Fitness f) throws IOException {
+    public Popolazione mutazione(Fitness f) throws IOException {
         int x = 0;
-        if(f.getTipologia().equals("MOVIE"))
+        if(f.getTipo().equals("MOVIE"))
             //numero di film nel dataset
             x = 2444;
         else
             //numero di serie nel dataset
             x = 722;
         //estrae una lista dal dataset corrispondente alla tipologia selezionata
-        List<Show> showList = Parser.getInstance(f.getTipologia());
+        List<Show> showList = Parser.getInstance(f.getTipo());
 
         ArrayList<Show> listShow = (ArrayList<Show>) showList;
-        ArrayList<Individuo> list = p.getLista();
+        ArrayList<Individuo> list = popolazione.getLista();
 
         Random random = new Random();
 
@@ -75,7 +67,8 @@ public class GaUtility {
             double min = 0;
             int pos = 0;
             for(int j =0; j<5; j++){
-                double fit = FunzioneFitness.calcolaNumericIndividualFitness(i.get(j), f);
+                f.calcolaFitness(i);
+                double fit = i.getFitnessTotale();
                 if(fit < min) {
                     min = fit;
                     pos = j;
@@ -88,10 +81,42 @@ public class GaUtility {
             i.add(pos, listShow.get(n));
         }
 
-        for(Individuo ind: p.getLista())
-            FunzioneFitness.calcolaTotalFitness(f, ind);
-        return p;
+        for(Individuo ind: popolazione.getLista())
+            f.calcolaFitness(ind);
 
+        return popolazione;
     }
-*/
+
+
+    public ArrayList<Individuo> selezione(Fitness f){
+        for(Individuo i : popolazione.getLista()){
+            f.calcolaFitness(i);
+        }
+        return this.orderByFitness();
+    }
+
+    private ArrayList<Individuo> orderByFitness(){
+
+        ArrayList<Double> valori = new ArrayList<>();
+        ArrayList<Individuo> ordinata = new ArrayList<>();
+        ArrayList<Individuo> individui = popolazione.getLista();
+
+        for(int i = 0; i<popolazione.getLista().size(); i++)
+            valori.add( i, popolazione.getLista().get(i).getFitnessTotale());
+        Collections.sort(valori);
+        int i = 0;
+        int j = popolazione.getLista().size();
+        int size = 0;
+        while(j != i){
+            for(int x = 0; x<sizeMatingPool; x++ ){
+                System.out.println("valore di fitness" + individui.get(x).getFitnessTotale() + " individuo : " + individui.get(x));
+                if(individui.get(x).getFitnessTotale() == valori.get(i)) {
+                    ordinata.add(individui.get(x));
+                    size++;
+                }
+            }
+            i++;
+        }
+        return ordinata;
+    }
 }
