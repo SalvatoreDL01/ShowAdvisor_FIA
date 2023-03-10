@@ -12,7 +12,10 @@ public class MainServizi {
         HashMap<String, Integer> generi = p.contaGeneri();
         HashMap<String, Integer> season = p.contaSeason();
         HashMap<Double, Integer> score = p.contaScore();
+        HashMap<Double, Integer> runF = p.contaRunFilm();
 
+        System.out.println("stampa della map dei runf");
+        System.out.println(runF);
         System.out.println("stampa della map dei generi");
         System.out.println(generi);
         System.out.println("stampa della map delle season");
@@ -23,11 +26,20 @@ public class MainServizi {
         Collection interi = generi.values();
         Collection totS = season.values();
         Collection sc = score.values();
-
+        Collection runfilmValue = runF.values();
+        Collection runfilmKey = runF.keySet();
         Collection sKey = score.keySet();
 
-
-        int sommaG = 0, sommaS = 0;
+        System.out.println("\n\nChiavi runtime film\n");
+        for(Object i : runfilmKey){
+            double x = (Double) i;
+            System.out.println(x);
+        }
+        System.out.println("\n\nvalori runtime film\n");
+        for(Object i : runfilmValue){
+            int x = (Integer) i;
+            System.out.println(x);
+        }
 /*
         System.out.println("risultati dei generi");
         for(Object i : interi){
@@ -40,7 +52,7 @@ public class MainServizi {
             int x = (Integer) i;
             System.out.println(x);
         }
-*/
+
         System.out.println("risultati dello score");
         for(Object i : sc){
             int x = (Integer) i;
@@ -51,10 +63,8 @@ public class MainServizi {
         for(Object i : sKey){
             Double x = (Double) i;
             System.out.println(x);
-        }
+        }*/
 
 
-        System.out.println("numero totale generi : " + sommaG);
-        System.out.println("numero totale season : " + sommaS);
     }
 }

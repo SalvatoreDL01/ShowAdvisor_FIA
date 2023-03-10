@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GaUtility {
-
+/*
     private int sizeMatingPool;
     private ArrayList<Show> listaTitoli;
     private int elementi;
@@ -93,5 +93,5 @@ public class GaUtility {
         return p;
 
     }
-
+*/
 }

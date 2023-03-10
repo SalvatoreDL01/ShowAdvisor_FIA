@@ -18,6 +18,8 @@ public class Parser {
     private HashMap<String, Integer> nSeason = new HashMap<>();
 
     private HashMap<Double, Integer> nScore = new HashMap<>();
+    private HashMap<Double, Integer> nRunSerie = new HashMap<>();
+    private HashMap<Double, Integer> nRunFilm = new HashMap<>();
     private static Show[] list = null;
 
     private static List<Show> listFilm = new ArrayList<Show>();
@@ -102,11 +104,15 @@ public class Parser {
     public HashMap<Double, Integer> contaRunFilm() {
 
         for (Show s : list) {
-            if (!nScore.containsKey(s.getScore()))
-                nScore.put(s.getScore(), 0);
-            nScore.put(s.getScore(), nScore.get((s.getScore())) + 1);
+            if (s.getType().equals("MOVIE")) {
+                if (!nRunFilm.containsKey(s.getRuntime()))
+                    nRunFilm.put(s.getRuntime(), 0);
+
+                    System.out.println(s.getType());
+                nRunFilm.put(s.getRuntime(), nRunFilm.get((s.getRuntime())) + 1);
+            }
         }
-        return nScore;
+        return nRunFilm;
     }
 }
 

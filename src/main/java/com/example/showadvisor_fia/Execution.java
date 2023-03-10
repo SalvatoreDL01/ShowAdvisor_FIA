@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "Execution", value = "/Execution")
-public class Execution extends HttpServlet {
+public class Execution extends HttpServlet {/*
     private String message;
 
     public void init() {
@@ -40,7 +40,6 @@ public class Execution extends HttpServlet {
         GaUtility.crossOver(popolazione, fitness);
         GaUtility.mutazione(popolazione, fitness);
             for(Individuo ind:l){
-                System.out.println(ind.getFitnessTotale());
                 System.out.println(ind);
             }
 
@@ -50,5 +49,5 @@ public class Execution extends HttpServlet {
     }
 
     public void destroy() {
-    }
+    }*/
 }

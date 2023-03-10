@@ -16,7 +16,7 @@ import java.util.Random;
 
 @WebServlet(name = "ServletSerie", value = "/ServletSerie")
 public class ServletSerie extends HttpServlet{
-
+/*
         private String message;
 
 
@@ -79,5 +79,5 @@ public class ServletSerie extends HttpServlet{
 
         public void destroy() {
         }
-
+*/
     }

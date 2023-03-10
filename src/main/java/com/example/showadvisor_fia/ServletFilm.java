@@ -21,7 +21,7 @@ public class ServletFilm extends HttpServlet {
 
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+/*
         Popolazione popolazione = new Popolazione(8);
         popolazione.inizializza("MOVIE");
         List<String> generi = new ArrayList<String>();
@@ -76,6 +76,6 @@ public class ServletFilm extends HttpServlet {
     }
 
     public void destroy() {
-    }
+    */}
 
 }
