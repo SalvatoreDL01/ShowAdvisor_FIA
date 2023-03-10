@@ -1,11 +1,13 @@
 package com.example.showadvisor_fia;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Fitness {
 
-    private ArrayList<Genere> listaGeneri = new ArrayList<>();
+    private ArrayList<String> listaGeneri;
+    private HashMap<String, Integer> map = new HashMap<>();
     private String tipo;
     private int mediaGeneri = 433, stagionemin, stagionemax;
 
@@ -35,26 +37,27 @@ public class Fitness {
         }
     }
 
-    public Fitness(String tipo, int min, int max){
-        listaGeneri.add(new Genere("romance", 512));
-        listaGeneri.add(new Genere("fantasy", 432));
-        listaGeneri.add(new Genere("horror", 221));
-        listaGeneri.add(new Genere("comedy", 1107));
-        listaGeneri.add(new Genere("european", 338));
-        listaGeneri.add(new Genere("documentation", 679));
-        listaGeneri.add(new Genere("war", 116));
-        listaGeneri.add(new Genere("thriller", 612));
-        listaGeneri.add(new Genere("history", 183));
-        listaGeneri.add(new Genere("animation", 345));
-        listaGeneri.add(new Genere("drama", 1430));
-        listaGeneri.add(new Genere("music", 136));
-        listaGeneri.add(new Genere("action", 596));
-        listaGeneri.add(new Genere("reality", 73));
-        listaGeneri.add(new Genere("crime", 532));
-        listaGeneri.add(new Genere("western", 55));
-        listaGeneri.add(new Genere("family", 337));
-        listaGeneri.add(new Genere("sport", 123));
-        listaGeneri.add(new Genere("sci-fi", 416));
+    public Fitness(String tipo, int min, int max, ArrayList<String> listaGeneri){
+        this.listaGeneri = listaGeneri;
+        map.put("romance", 512);
+        map.put("fantasy", 432);
+        map.put("horror", 221);
+        map.put("comedy", 1107);
+        map.put("european", 338);
+        map.put("documentation", 679);
+        map.put("war", 116);
+        map.put("thriller", 612);
+        map.put("history", 183);
+        map.put("animation", 345);
+        map.put("drama", 1430);
+        map.put("music", 136);
+        map.put("action", 596);
+        map.put("reality", 73);
+        map.put("crime", 532);
+        map.put("western", 55);
+        map.put("family", 337);
+        map.put("sport", 123);
+        map.put("sci-fi", 416);
         this.tipo = tipo;
         stagionemax = max;
         stagionemin = min;
@@ -64,9 +67,9 @@ public class Fitness {
         double fitness = 0;
         for(Show s:i){
             String generi = s.getGenres();
-            for(Genere g:listaGeneri){
-                if(generi.contains(g.getNome()))
-                    fitness += mediaGeneri/g.getConteggio();
+            for(String g:listaGeneri){
+                if(generi.contains(g));
+                    fitness += mediaGeneri/map.get(g);
             }
             if(s.getScore() >= 8 && s.getScore() <= 10)
                 fitness += 10;
