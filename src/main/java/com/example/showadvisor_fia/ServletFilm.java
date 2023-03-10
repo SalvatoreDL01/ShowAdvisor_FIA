@@ -23,7 +23,7 @@ public class ServletFilm extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         //raccolta dati dalla jsp
-        Popolazione popolazione = new Popolazione(50);
+        Popolazione popolazione = new Popolazione(4);
         popolazione.inizializza("MOVIE");
         ArrayList<String> generi = new ArrayList<String>();
 
@@ -38,15 +38,17 @@ public class ServletFilm extends HttpServlet {
 
 
         Fitness fitness = new Fitness("MOVIE",0,0, generi, durata);
-        GaUtility ga = new GaUtility(30, "MOVIE", popolazione);
+        GaUtility ga = new GaUtility(2, "MOVIE", popolazione);
 
-        for(int i=0;i<5000;i++){
-            ArrayList<Individuo> l= ga.selezione(fitness);
-            popolazione.setLista(l);
+        for(int i=0;i<5000;i++) {
+            //ArrayList<Individuo> l = ga.selezione(fitness);
+            //popolazione.setLista(l);
+            ga.setPopolazione(popolazione);
             ga.crossOver(fitness);
             ga.mutazione(fitness);
-        }
-        popolazione.setLista(ga.selezione(fitness));
+        }/*
+        ga.setPopolazione(popolazione);
+        popolazione.setLista(ga.selezione(fitness));*/
         HttpSession session = request.getSession();
         session.setAttribute("tipo", "FILM");
         session.setAttribute("individuo",popolazione.getLista().get(0));

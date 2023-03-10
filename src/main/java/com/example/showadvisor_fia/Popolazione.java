@@ -32,7 +32,8 @@ public class Popolazione{
     //metodo per inizializzare una popolazione di nElementi individui chiamando il metodo crea per ogni individuo
     public void inizializza(String tipo) throws IOException {
         for(int i=0; i<nElementi;){
-            Individuo individuo = new Individuo();
+            System.out.println("sno qui siuuuuuuuum");
+            Individuo individuo = new Individuo(10, 0);
             individuo.crea(tipo);
             if(!lista.contains(individuo)){
                 lista.add(individuo);

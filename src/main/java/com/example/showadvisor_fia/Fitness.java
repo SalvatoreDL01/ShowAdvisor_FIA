@@ -37,7 +37,7 @@ public class Fitness {
         }
     }
 
-    public Fitness(String tipo, int min, int max, ArrayList<String> listaGeneri){
+    public Fitness(String tipo, int min, int max, ArrayList<String> listaGeneri, String durata){
         this.listaGeneri = listaGeneri;
         map.put("romance", 512);
         map.put("fantasy", 432);
@@ -66,8 +66,10 @@ public class Fitness {
     public void calcolaFitness(Individuo i){
         double fitness = 0;
         for(Show s:i){
+            System.out.println("calcolafitness 1 ");
             String generi = s.getGenres();
             for(String g:listaGeneri){
+                System.out.println("calcolafitness 2 ");
                 if(generi.contains(g));
                     fitness += mediaGeneri/map.get(g);
             }
