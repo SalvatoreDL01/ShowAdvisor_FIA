@@ -11,9 +11,11 @@ public class TestClass {
         listaGeneri.add("action");
         listaGeneri.add("comedy");
         Fitness fitness = new Fitness("MOVIE", 0, 0, listaGeneri);
-        System.out.println(fitness.calcolaFitnessPopolazione(popolazione));
+        fitness.calcolaFitnessPopolazione(popolazione);
+        System.out.println(popolazione + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         GaUtility utility = new GaUtility(2, "MOVIE", fitness);
-        utility.mutaPopolazione(popolazione);
-        System.out.println(fitness.calcolaFitnessPopolazione(popolazione));
+        utility.selezione(popolazione);
+        for(Individuo i: popolazione.getLista())
+            System.out.println(fitness.calcolaFitness(i));
     }
 }

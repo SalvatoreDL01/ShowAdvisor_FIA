@@ -19,6 +19,13 @@ public class GaUtility {
         this.tipo = tipo;
     }
 
+    public void selezione(Popolazione popolazione){
+        Collections.sort(popolazione.getLista(), (i1, i2) -> {
+            return (int) (i1.getFitnessTotale() - i2.getFitnessTotale());
+        });
+    }
+
+    //metodo per la mutazione di un singolo individuo
     public void mutazione(Individuo i) throws IOException {
         int n, posizionePeggiore = 0;
         double valorePeggiore = fitness.fitnessShow(i.get(0));
@@ -36,6 +43,7 @@ public class GaUtility {
         fitness.calcolaFitness(i);
     }
 
+    //metodo per la mutazione di una popolazione di individui
     public void mutaPopolazione(Popolazione p) throws IOException {
         for(Individuo i: p.getLista()){
             this.mutazione(i);
@@ -118,14 +126,14 @@ public class GaUtility {
 
 
 
-    public ArrayList<Individuo> selezione(Fitness f){
+    public ArrayList<Individuo> selezione(Popolazione popolazione){
         for(Individuo i : popolazione.getLista()){
-            f.calcolaFitness(i);
+            fitness.calcolaFitness(i);
         }
-        return this.orderByFitness();
+        return this.orderByFitness(popolazione);
     }
 
-    private ArrayList<Individuo> orderByFitness(){
+    private ArrayList<Individuo> orderByFitness(Popolazione popolazione){
 
         ArrayList<Double> valori = new ArrayList<>();
         ArrayList<Individuo> ordinata = new ArrayList<>();
@@ -139,7 +147,6 @@ public class GaUtility {
         int size = 0;
         while(j != i){
             for(int x = 0; x<sizeMatingPool; x++ ){
-                System.out.println("valore di fitness" + individui.get(x).getFitnessTotale() + " individuo : " + individui.get(x));
                 if(individui.get(x).getFitnessTotale() == valori.get(i)) {
                     ordinata.add(individui.get(x));
                     size++;
@@ -150,5 +157,7 @@ public class GaUtility {
         return ordinata;
     }
 
-     */
+*/
+
+
 }

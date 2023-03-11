@@ -9,7 +9,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
 /*Classe che ha il compito di costruire un individuo */
-public class Individuo extends ArrayList<Show> {
+public class Individuo extends ArrayList<Show>{
 
     private List<String> generi;
     private String runtimeDesiderato;
@@ -283,5 +283,4 @@ public class Individuo extends ArrayList<Show> {
     protected void finalize() throws Throwable {
         super.finalize();
     }
-
 }
