@@ -19,11 +19,23 @@ public class GaUtility {
         this.tipo = tipo;
     }
 
+    public Individuo finndBestIndividuo(Popolazione popolazione){
+        int pos = 0;
+        double bestFit = 0;
+        for(int k=0; k<popolazione.getLista().size(); k++){
+            if(popolazione.getLista().get(k).getFitnessTotale() > bestFit){
+                bestFit = popolazione.getLista().get(k).getFitnessTotale();
+                pos = k;
+            }
+        }
+        return popolazione.getLista().get(pos);
+    }
+
     //metodo per la selezione di sizeMatingPool elementi
     public void selezione(Popolazione popolazione){
         fitness.calcolaFitnessPopolazione(popolazione);
         Collections.sort(popolazione.getLista(), (i1, i2) -> {
-            return (int) (i1.getFitnessTotale() - i2.getFitnessTotale());
+            return Double.compare(i1.getFitnessTotale(), i2.getFitnessTotale());
         });
         int i;
         for(i=sizeMatingPool; i<popolazione.getLista().size();){
@@ -52,6 +64,8 @@ public class GaUtility {
     //metodo per la mutazione di una popolazione di individui
     public void mutaPopolazione(Popolazione p) throws IOException {
         for(Individuo i: p.getLista()){
+            if(i.size() == 0)
+                System.out.println("porco dingi");
             this.mutazione(i);
         }
         fitness.calcolaFitnessPopolazione(p);
@@ -69,7 +83,7 @@ public class GaUtility {
             iCross2 = popolazione.getLista().get(random.nextInt(sizeMatingPool - 1));
             int singlePoint = random.nextInt(popolazione.getLista().get(0).size());
             int j;
-            for(j=0; j<popolazione.getLista().get(0).size()-1; j++){
+            for(j=0; j<popolazione.getLista().get(0).size(); j++){
                 if(j < singlePoint)
                     i1.add(iCross1.get(j));
                 else

@@ -51,8 +51,10 @@ public class Fitness {
         for(Show s:i){
             String generi = s.getGenres();
             for(String g:listaGeneri){
-                if(generi.contains(g))
-                    fitness += (mediaGeneri / (map.get(g)));
+                if(generi.contains(g)) {
+                    //fitness += (mediaGeneri / (map.get(g)));
+                    fitness += 50;
+                }
             }
             if(s.getScore() >= 8 && s.getScore() <= 10)
                 fitness += 10;
