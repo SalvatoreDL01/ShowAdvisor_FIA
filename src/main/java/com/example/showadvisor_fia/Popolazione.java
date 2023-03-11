@@ -34,6 +34,22 @@ public class Popolazione{
         }
     }
 
+    public int getNumIndividui() {
+        return numIndividui;
+    }
+
+    public void setNumIndividui(int numIndividui) {
+        this.numIndividui = numIndividui;
+    }
+
+    public int getNumShow() {
+        return numShow;
+    }
+
+    public void setNumShow(int numShow) {
+        this.numShow = numShow;
+    }
+
     public String toString(){
         String str = "";
         for(Individuo i: lista)

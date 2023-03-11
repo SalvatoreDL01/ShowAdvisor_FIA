@@ -19,10 +19,16 @@ public class GaUtility {
         this.tipo = tipo;
     }
 
+    //metodo per la selezione di sizeMatingPool elementi
     public void selezione(Popolazione popolazione){
+        fitness.calcolaFitnessPopolazione(popolazione);
         Collections.sort(popolazione.getLista(), (i1, i2) -> {
             return (int) (i1.getFitnessTotale() - i2.getFitnessTotale());
         });
+        int i;
+        for(i=sizeMatingPool; i<popolazione.getLista().size();){
+            popolazione.getLista().remove(i);
+        }
     }
 
     //metodo per la mutazione di un singolo individuo
@@ -48,36 +54,33 @@ public class GaUtility {
         for(Individuo i: p.getLista()){
             this.mutazione(i);
         }
+        fitness.calcolaFitnessPopolazione(p);
     }
 
-    /*
-    public Popolazione crossOver(Fitness f){
+
+    public void crossOver(Popolazione popolazione){
         Random random = new Random();
         int i;
-        for(i=0; i<((popolazione.getnElementi()-sizeMatingPool)/2)-1; i++){
-            Individuo i1 = new Individuo();
-            Individuo i2 = new Individuo();
-            Individuo iCross1 = popolazione.getLista().get(sizeMatingPool);
-            Individuo iCross2 = popolazione.getLista().get(sizeMatingPool);
+        Individuo iCross1 = null;
+        Individuo iCross2 = null;
+        while(popolazione.getLista().size() < popolazione.getNumIndividui()){
+            Individuo i1 = new Individuo(popolazione.getNumShow(), 0);
+            iCross1 = popolazione.getLista().get(random.nextInt(sizeMatingPool - 1));
+            iCross2 = popolazione.getLista().get(random.nextInt(sizeMatingPool - 1));
             int singlePoint = random.nextInt(popolazione.getLista().get(0).size());
             int j;
             for(j=0; j<popolazione.getLista().get(0).size()-1; j++){
-                if(j < singlePoint){
+                if(j < singlePoint)
                     i1.add(iCross1.get(j));
-                    i2.add(iCross2.get(j));
-                }
-                else{
+                else
                     i1.add(iCross2.get(j));
-                    i2.add(iCross1.get(j));
-                }
             }
             popolazione.getLista().add(i1);
-            popolazione.getLista().add(i2);
         }
-        return popolazione;
+        fitness.calcolaFitnessPopolazione(popolazione);
     }
 
-     */
+
 
     /*public Popolazione mutazione(Fitness f) throws IOException {
         int x = 0;
