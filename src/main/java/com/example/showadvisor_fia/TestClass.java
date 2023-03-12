@@ -6,7 +6,14 @@ import java.util.ArrayList;
 
 public class TestClass {
     public static void main(String[] args) throws IOException {
-        Popolazione popolazione = new Popolazione(1000, 10);
+        ArrayList<Integer> lista = new ArrayList<>();
+        for(int i=1; i<5000; i += 70){
+            System.out.println("(" + i + ", " + evoluzione(i) + ")");
+        }
+    }
+
+    public static double evoluzione(int n) throws IOException{
+        Popolazione popolazione = new Popolazione(n, 20);
         popolazione.inizializza("MOVIE");
         ArrayList<String> listaGeneri = new ArrayList<>();
         listaGeneri.add("action");
@@ -26,9 +33,6 @@ public class TestClass {
             }
         }
         fitness.calcolaFitnessPopolazione(popolazione);
-        System.out.println(utility.finndBestIndividuo(popolazione) + "\n" + fitness.calcolaFitness(utility.finndBestIndividuo(popolazione)));
-        for(Show s: utility.finndBestIndividuo(popolazione)){
-            System.out.println(fitness.fitnessShow(s));
-        }
+        return utility.finndBestIndividuo(popolazione).getFitnessTotale();
     }
 }
