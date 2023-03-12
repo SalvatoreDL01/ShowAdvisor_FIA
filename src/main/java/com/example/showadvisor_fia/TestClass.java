@@ -1,6 +1,6 @@
 package com.example.showadvisor_fia;
 
-import javax.management.InstanceNotFoundException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,11 +9,11 @@ public class TestClass {
         ArrayList<Integer> lista = new ArrayList<>();
         evoluzione(1000);
         /*
-        for(int i=1; i<5000; i += 70){
+        evoluzione(1000);
+        /*for(int i=1; i<5000; i += 70){
             System.out.println("(" + i + ", " + evoluzione(i) + ")");
-        }
+        }*/
 
-         */
     }
 
     public static double evoluzione(int n) throws IOException{
@@ -32,8 +32,10 @@ public class TestClass {
             utility.crossOver(popolazione);
             utility.mutaPopolazione(popolazione);
             for(Show s: utility.finndBestIndividuo(popolazione)){
-                if(fitness.fitnessShow(s) > 100)
+                if(fitness.fitnessShow(s) > 100) {
                     nBest += 1;
+                    System.out.println("Show : " + s);
+                }
             }
         }
         fitness.calcolaFitnessPopolazione(popolazione);
