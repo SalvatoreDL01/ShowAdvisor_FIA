@@ -6,40 +6,38 @@ import java.util.ArrayList;
 
 public class TestClass {
     public static void main(String[] args) throws IOException {
+        Popolazione popolazione = new Popolazione(2000, 5);
+        popolazione.inizializza("MOVIE");
         ArrayList<Integer> lista = new ArrayList<>();
-        evoluzione(1000);
-        /*
-        evoluzione(1000);
+        Individuo newIndividuo;
+        Individuo max = new Individuo (5, 0);
+        for(int i = 0; i< 500; i++){
+            newIndividuo = evoluzione(popolazione);
+            if(newIndividuo.getFitnessTotale() > max.getFitnessTotale() )
+                max = newIndividuo;
+        }
+        System.out.println(max);
+        System.out.println("fitness  "+ max.getFitnessTotale());
         /*for(int i=1; i<5000; i += 70){
             System.out.println("(" + i + ", " + evoluzione(i) + ")");
         }*/
 
     }
 
-    public static double evoluzione(int n) throws IOException{
-        Popolazione popolazione = new Popolazione(n, 7);
-        popolazione.inizializza("MOVIE");
+    public static Individuo evoluzione( Popolazione popolazione) throws IOException{
         ArrayList<String> listaGeneri = new ArrayList<>();
-        listaGeneri.add("action");
-        listaGeneri.add("comedy");
-        listaGeneri.add("european");
-        Fitness fitness = new Fitness("MOVIE", 0, 0, listaGeneri);
-        GaUtility utility = new GaUtility(5, "MOVIE", fitness);
-        int nBest = 0;
-        while(nBest > 5){
-            nBest = 0;
-            utility.selezione(popolazione);
-            utility.crossOver(popolazione);
+        listaGeneri.add("reality");
+        listaGeneri.add("music");
+        listaGeneri.add("sport");
+        Fitness fitness = new Fitness("MOVIE", 0, 0, listaGeneri, 80, 100);
+        GaUtility utility = new GaUtility(1000, "MOVIE", fitness);
+
+        utility.selezione(popolazione);
+        utility.crossOver(popolazione);
+        for(int i = 0; i<8; i++)
             utility.mutaPopolazione(popolazione);
-            for(Show s: utility.finndBestIndividuo(popolazione)){
-                if(fitness.fitnessShow(s) > 100) {
-                    nBest += 1;
-                    System.out.println("Show : " + s);
-                }
-            }
-        }
+
         fitness.calcolaFitnessPopolazione(popolazione);
-        System.out.println(utility.finndBestIndividuo(popolazione));
-        return utility.finndBestIndividuo(popolazione).getFitnessTotale();
+        return utility.finndBestIndividuo(popolazione);
     }
 }

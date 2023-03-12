@@ -6,13 +6,14 @@ import java.util.List;
 
 public class Fitness {
 
+    private int minutiMin, minutiMax;
     private ArrayList<String> listaGeneri;
     private HashMap<String, Double> map = new HashMap<>();
     private String tipo;
     private int stagionemin, stagionemax;
     private double mediaGeneri = 3000;
 
-    public Fitness(String tipo, int min, int max, ArrayList<String> listaGeneri){
+    public Fitness(String tipo, int min, int max, ArrayList<String> listaGeneri, int minM, int maxM){
         this.listaGeneri = listaGeneri;
         map.put("romance", 512.0);
         map.put("fantasy", 432.0);
@@ -36,6 +37,8 @@ public class Fitness {
         this.tipo = tipo;
         stagionemax = max;
         stagionemin = min;
+        minutiMax = maxM;
+        minutiMin = minM;
     }
 
     public double calcolaFitnessPopolazione(Popolazione p){
@@ -46,7 +49,65 @@ public class Fitness {
         return fitness;
     }
 
-    public double calcolaFitness(Individuo i){
+    public double calcolaFitness(Individuo i) {
+        double totale = 0;
+        for (Show s : i)
+            totale += fitnessShow(s);
+        i.setFitnessTotale(totale);
+        return totale;
+    }
+
+    public double fitnessShow(Show s){
+        double fitness = 0;
+        String generi = s.getGenres();
+        for(String g:listaGeneri){
+            if(generi.contains(g))
+            fitness += 25 + (mediaGeneri / (map.get(g)));
+        }
+        if(s.getScore() > 8 && s.getScore() <= 10)
+            fitness += 10;
+        if(s.getScore() > 6 && s.getScore() <= 8)
+            fitness += 7;
+        if(s.getScore() > 5 && s.getScore() <= 6)
+            fitness += 3;
+        if(s.getScore() > 4 && s.getScore() <= 5)
+            fitness += 1;
+        if(s.getScore() > 1 && s.getScore() <= 2)
+            fitness -= 3;
+        if(s.getScore() > 0 && s.getScore() <= 1)
+            fitness -= 10;
+        if(tipo.equals("SHOW")) {
+            if (Integer.parseInt(s.getSeasons()) >= stagionemin && Integer.parseInt(s.getSeasons()) <= stagionemax) {
+                fitness += 10;
+            }
+            if (Integer.parseInt(s.getSeasons()) < stagionemin) {
+                fitness -= stagionemin - Integer.parseInt(s.getSeasons());
+            }
+            if (Integer.parseInt(s.getSeasons()) > stagionemax) {
+                fitness -= Integer.parseInt(s.getSeasons()) - stagionemax;
+            }
+        }
+
+        if (s.getRuntime() >= minutiMin && s.getRuntime() <= minutiMax) {
+            fitness += 10;
+        }
+        if (s.getRuntime() < minutiMin) {
+            if((minutiMin - s.getRuntime()) > 15)
+                fitness -= 20;
+            else
+                fitness -= minutiMin - s.getRuntime();
+        }
+        if (s.getRuntime() > minutiMax) {
+            if((s.getRuntime() - minutiMax) > 15)
+                fitness -= 20;
+            else
+                fitness -= s.getRuntime() - minutiMax;
+        }
+        return fitness;
+    }
+
+}
+/*
         double fitness = 0;
         for(Show s:i){
             String generi = s.getGenres();
@@ -82,39 +143,4 @@ public class Fitness {
         }
         i.setFitnessTotale(fitness);
         return fitness;
-    }
-
-    public double fitnessShow(Show s){
-        double fitness = 0;
-        String generi = s.getGenres();
-        for(String g:listaGeneri){
-            if(generi.contains(g))
-            fitness += (mediaGeneri / (map.get(g)));
-        }
-        if(s.getScore() >= 8 && s.getScore() <= 10)
-            fitness += 10;
-        if(s.getScore() >= 6 && s.getScore() <= 8)
-            fitness += 7;
-        if(s.getScore() >= 5 && s.getScore() <= 6)
-            fitness += 3;
-        if(s.getScore() >= 4 && s.getScore() <= 5)
-            fitness += 1;
-        if(s.getScore() >= 1 && s.getScore() <= 2)
-            fitness -= 3;
-        if(s.getScore() >= 0 && s.getScore() <= 1)
-            fitness -= 10;
-        if(tipo.equals("SHOW")) {
-            if (Integer.parseInt(s.getSeasons()) >= stagionemin && Integer.parseInt(s.getSeasons()) <= stagionemax) {
-                fitness += 10;
-            }
-            if (Integer.parseInt(s.getSeasons()) <= stagionemin) {
-                fitness -= stagionemin - Integer.parseInt(s.getSeasons());
-            }
-            if (Integer.parseInt(s.getSeasons()) >= stagionemax) {
-                fitness -= Integer.parseInt(s.getSeasons()) - stagionemax;
-            }
-        }
-        return fitness;
-    }
-
-}
+    }*/

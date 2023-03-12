@@ -9,13 +9,13 @@ public class Show implements Serializable{
     private String type;
     private String description;
     private double release_year;
-    private double runtime;
+    private int runtime;
     private String genres;
     private String seasons;
     private double score;
     private double individualFitness;
 
-    public Show(String id, String title, String type, String description, double release_year, double runtime,
+    public Show(String id, String title, String type, String description, double release_year, int runtime,
                 String genres, String seasons, double score) {
         this.id = id;
         this.title = title;
@@ -73,7 +73,7 @@ public class Show implements Serializable{
         return runtime;
     }
 
-    public void setRuntime(double runtime) {
+    public void setRuntime(int runtime) {
         this.runtime = runtime;
     }
 

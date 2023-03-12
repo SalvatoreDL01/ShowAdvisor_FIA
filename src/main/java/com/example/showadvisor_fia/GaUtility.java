@@ -38,7 +38,7 @@ public class GaUtility {
             return Double.compare(i1.getFitnessTotale(), i2.getFitnessTotale());
         });
         int i;
-        for(i=sizeMatingPool; i<popolazione.getLista().size();){
+        for(i=sizeMatingPool; i<popolazione.getLista().size();){ //prendiamo i migliori mille
             popolazione.getLista().remove(i);
         }
     }
@@ -63,11 +63,8 @@ public class GaUtility {
 
     //metodo per la mutazione di una popolazione di individui
     public void mutaPopolazione(Popolazione p) throws IOException {
-        for(Individuo i: p.getLista()){
-            if(i.size() == 0)
-                System.out.println("porco dingi");
+        for(Individuo i: p.getLista())
             this.mutazione(i);
-        }
         fitness.calcolaFitnessPopolazione(p);
     }
 
