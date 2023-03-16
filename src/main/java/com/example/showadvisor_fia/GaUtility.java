@@ -68,7 +68,6 @@ public class GaUtility {
         fitness.calcolaFitnessPopolazione(p);
     }
 
-
     public void crossOver(Popolazione popolazione){
         Random random = new Random();
         int i;
