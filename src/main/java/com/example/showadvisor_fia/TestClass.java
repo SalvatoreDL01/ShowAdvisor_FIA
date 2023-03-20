@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class TestClass {
     public static void main(String[] args) throws IOException {
-        Popolazione popolazione = new Popolazione(800, 5);
+        Popolazione popolazione = new Popolazione(500, 5);
         popolazione.inizializza("MOVIE");
         ArrayList<Integer> lista = new ArrayList<>();
         Individuo newIndividuo;
         Individuo max = new Individuo (5, 0);
-        for(int i = 0; i< 1000; i++){
+        for(int i = 0; i< 500; i++){
             newIndividuo = evoluzione(popolazione);
             if(newIndividuo.getFitnessTotale() > max.getFitnessTotale() )
                 max = newIndividuo;
@@ -19,9 +19,6 @@ public class TestClass {
         }
         System.out.println(max);
         System.out.println("fitness  "+ max.getFitnessTotale());
-        /*for(int i=1; i<5000; i += 70){
-            System.out.println("(" + i + ", " + evoluzione(i) + ")");
-        }*/
 
     }
 
@@ -31,7 +28,7 @@ public class TestClass {
         listaGeneri.add("music");
         listaGeneri.add("sport");
         Fitness fitness = new Fitness("MOVIE", 0, 0, listaGeneri, 80, 100);
-        GaUtility utility = new GaUtility(700, "MOVIE", fitness);
+        GaUtility utility = new GaUtility(550, "MOVIE", fitness);
 
         utility.selezione(popolazione);
         utility.crossOver(popolazione);
@@ -40,5 +37,9 @@ public class TestClass {
 
         fitness.calcolaFitnessPopolazione(popolazione);
         return utility.finndBestIndividuo(popolazione);
+    }
+
+    public void test(int i, int n, int l){
+        //metodo per il test
     }
 }
