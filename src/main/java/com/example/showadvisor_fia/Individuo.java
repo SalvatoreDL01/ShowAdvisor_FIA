@@ -54,17 +54,17 @@ public class Individuo extends ArrayList<Show>{
             x=722;
 
         Random random = new Random();
-        Show individuo;
+        Show show;
         List<Show> showList = Parser.getInstance(tipo);
         int i, n;
         for(i=0; i<nShow; i++){
             n = random.nextInt(x);
-            individuo = showList.get(n);
-            while(this.contains(individuo)){
+            show = showList.get(n);
+            while(this.contains(show)){
                 n = random.nextInt(x);
-                individuo = showList.get(n);
+                show = showList.get(n);
             }
-            this.add(individuo);
+            this.add(show);
         }
 
     }

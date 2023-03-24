@@ -24,7 +24,7 @@ public class ServletSerie extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         Popolazione popolazione = new Popolazione(500, 5);
-        popolazione.inizializza("SHOW");
+        popolazione.inizializza("SERIE");
 
         int durataIntero = Integer.parseInt(request.getParameter("durataSerie"));
 
@@ -38,6 +38,12 @@ public class ServletSerie extends HttpServlet{
             for(String s : checkBox)
                 listaGeneri.add(s);
 
+        System.out.println("minSeason : " + minSeason);
+        System.out.println("maxSeason : " + maxSeason);
+        System.out.println("durata : " + durata);
+
+        for(String s : listaGeneri)
+            System.out.println(s);
 
         Individuo newIndividuo;
         Individuo max = new Individuo(5, 0);
@@ -57,8 +63,8 @@ public class ServletSerie extends HttpServlet{
 
     }
     public Individuo evoluzione( Popolazione popolazione) throws IOException{
-        Fitness fitness = new Fitness("MOVIE", minSeason, maxSeason, listaGeneri, 80, 100);
-        GaUtility utility = new GaUtility(550, "MOVIE", fitness);
+        Fitness fitness = new Fitness("SERIE", minSeason, maxSeason, listaGeneri, 80, 100);
+        GaUtility utility = new GaUtility(550, "SERIE", fitness);
 
         utility.selezione(popolazione);
         utility.crossOver(popolazione);
@@ -90,72 +96,5 @@ public class ServletSerie extends HttpServlet{
 
     public void destroy() {
     }
-
 }
 
-
-
-/*
-        private String message;
-
-
-        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-            Popolazione popolazione = new Popolazione(8);
-            popolazione.inizializza("SHOW");
-            List<String> generi = new ArrayList<String>();
-            ArrayList<Individuo> banca = new ArrayList<>();
-
-            int durataIntero = Integer.parseInt(request.getParameter("durataSerie"));
-            int minSeason = Integer.parseInt(request.getParameter("minSeason"));
-            int maxSeason = Integer.parseInt(request.getParameter("maxSeason"));
-
-            String durata = convertiDurata(durataIntero);
-            String[] checkBox = request.getParameterValues("generiSerie");
-
-            if(checkBox != null && checkBox.length != 0)
-                for(String s : checkBox)
-                    generi.add(s);
-
-            Fitness fitness = new Fitness( generi, durata, "SHOW",maxSeason, minSeason);
-            Selezione sel = new Selezione();
-
-            for(int i=0;i<5000;i++){
-                sel.setP(popolazione);
-                ArrayList<Individuo> l= sel.selezione(fitness);
-                popolazione.setLista(l);
-                GaUtility.crossOver(popolazione, fitness);
-                GaUtility.mutazione(popolazione, fitness);
-
-            }
-            sel.setP(popolazione);
-            popolazione.setLista(sel.selezione(fitness));
-            HttpSession session = request.getSession();
-            session.setAttribute("tipo", "SERIE");
-            session.setAttribute("individuo",popolazione.getLista().get(0));
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-            requestDispatcher.forward(request, response);
-        }
-
-        public static String convertiDurata(int valore){
-            String durata = "errore";
-
-            if(valore == 3){
-                Random r = new Random();
-                valore = r.nextInt(2-0+1) - 0;
-            }
-
-            if(valore == 0)
-                durata = "corta";
-            else
-                if(valore == 1)
-                    durata = "media";
-                else
-                    if(valore == 2)
-                        durata = "lunga";
-            return durata;
-        }
-
-        public void destroy() {
-        }
-*/
