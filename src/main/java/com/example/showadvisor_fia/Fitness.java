@@ -33,7 +33,7 @@ public class Fitness {
         map.put("western", 55.0);
         map.put("family", 337.0);
         map.put("sport", 123.0);
-        map.put("sci-fi", 416.0);
+        map.put("scifi", 416.0);
         this.tipo = tipo;
         stagionemax = max;
         stagionemin = min;
@@ -60,9 +60,10 @@ public class Fitness {
     public double fitnessShow(Show s){
         double fitness = 0;
         String generi = s.getGenres();
+
         for(String g:listaGeneri){
             if(generi.contains(g))
-            fitness += 25 + (mediaGeneri / (map.get(g)));
+                fitness += 25 + (mediaGeneri / (map.get(g)));
         }
         if(s.getScore() > 8 && s.getScore() <= 10)
             fitness += 10;

@@ -18,43 +18,50 @@ import java.util.Random;
 public class ServletFilm extends HttpServlet {
 
     private String message;
+    private ArrayList<String> listaGeneri = new ArrayList<>();
 
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        //raccolta dati dalla jsp
-       /* Popolazione popolazione = new Popolazione(50);
+        Popolazione popolazione = new Popolazione(500, 5);
         popolazione.inizializza("MOVIE");
-        ArrayList<String> generi = new ArrayList<String>();
-
         int durataIntero = Integer.parseInt(request.getParameter("durataFilm"));
-
         String durata = convertiDurata(durataIntero);
         String[] checkBox = request.getParameterValues("generiFilm");
 
         if(checkBox != null && checkBox.length != 0)
             for(String s : checkBox)
-                generi.add(s);
+                listaGeneri.add(s);
 
+        Individuo newIndividuo;
+        Individuo max = new Individuo(5, 0);
+        for (int i = 0; i < 500; i++) {
+            newIndividuo = evoluzione(popolazione);
+            if (newIndividuo.getFitnessTotale() > max.getFitnessTotale())
+                max = newIndividuo;
 
-        //Fitness fitness = new Fitness("MOVIE",0,0, generi, durata);
-        GaUtility ga = new GaUtility(30, "MOVIE", popolazione);
-
-        for(int i=0;i<5000;i++){
-            ArrayList<Individuo> l= ga.selezione(fitness);
-            popolazione.setLista(l);
-            ga.crossOver(fitness);
-            ga.mutazione(fitness);
         }
-        popolazione.setLista(ga.selezione(fitness));
         HttpSession session = request.getSession();
         session.setAttribute("tipo", "FILM");
         session.setAttribute("individuo",popolazione.getLista().get(0));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
         requestDispatcher.forward(request, response);
+        System.out.println(max);
+        System.out.println("fitness  " + max.getFitnessTotale());
 
-        */
     }
+        public Individuo evoluzione( Popolazione popolazione) throws IOException{
+            Fitness fitness = new Fitness("MOVIE", 0, 0, listaGeneri, 80, 100);
+            GaUtility utility = new GaUtility(550, "MOVIE", fitness);
+
+            utility.selezione(popolazione);
+            utility.crossOver(popolazione);
+            for(int i = 0; i<4; i++)
+                utility.mutaPopolazione(popolazione);
+
+            fitness.calcolaFitnessPopolazione(popolazione);
+            return utility.finndBestIndividuo(popolazione);
+        }
 
     public static String convertiDurata(int valore){
         String durata = "errore";
