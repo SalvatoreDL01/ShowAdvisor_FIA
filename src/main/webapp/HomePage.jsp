@@ -43,7 +43,7 @@
                                 <row class = "empty">
                                     <div class="col-auto">
                                         <select class="form-select" name = "durataFilm" id = "selezionaDurata2" aria-label="Default select example">
-                                            <option selected value = "3">Seleziona la durata desiderara</option>
+                                            <option selected value = "3">Seleziona la durata desiderata</option>
                                             <option value="0">Corta (massimo 80 minuti)</option>
                                             <option value="1">Media (tra 80 e 120 minuti)</option>
                                             <option value="2">Lungo (minimo 120 minuti)</option>
