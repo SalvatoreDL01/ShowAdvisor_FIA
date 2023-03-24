@@ -477,7 +477,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </row>
 
                                 <row>
