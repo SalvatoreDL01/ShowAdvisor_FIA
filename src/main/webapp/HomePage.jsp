@@ -608,7 +608,7 @@
                 individuo = (Individuo) session.getAttribute("individuo");
                 for(Show s: individuo){
         %>
-        <li class="list-group-item" name ="result1" style="height: 200px; overflow-y: scroll;">TITOLO:<%=s.getTitle()%>,<br> DESCRIZIONE:<%=s.getDescription()%>,<br> ANNO REALIZZAZIONE:<%=s.getRelease_year()%>,<br> DURATA: <%=s.getRuntime()%>,<br> GENERI: <%=s.getGenres()%>,<br><%if(session.getAttribute("tipo").equals("SERIE")){%>NUMERO STAGIONI: <%=s.getSeasons()%>,<br> <%}%> PUNTEGGIO: <%=s.getScore()%></li>
+        <li class="list-group-item" name ="result1" style="height: 200px; overflow-y: scroll;">TITOLO:<%=s.getTitle()%>,<br> DESCRIZIONE:<%=s.getDescription()%>,<br> ANNO REALIZZAZIONE:<%=s.getRelease_year()%>,<br> DURATA: <%=s.getRuntime()%>,<br> GENERI: <%=s.getGenres()%>,<br><%if(session.getAttribute("tipo").equals("SHOW")){%>NUMERO STAGIONI: <%=s.getSeasons()%>,<br> <%}%> PUNTEGGIO: <%=s.getScore()%></li>
         <%}}%>
     </ul>
 </div>

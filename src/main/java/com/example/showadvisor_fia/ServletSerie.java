@@ -24,7 +24,7 @@ public class ServletSerie extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         Popolazione popolazione = new Popolazione(500, 5);
-        popolazione.inizializza("SERIE");
+        popolazione.inizializza("SHOW");
 
         int durataIntero = Integer.parseInt(request.getParameter("durataSerie"));
 
@@ -54,7 +54,7 @@ public class ServletSerie extends HttpServlet{
 
         }
         HttpSession session = request.getSession();
-        session.setAttribute("tipo", "SERIE");
+        session.setAttribute("tipo", "SHOW");
         session.setAttribute("individuo",popolazione.getLista().get(0));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
         requestDispatcher.forward(request, response);
@@ -63,8 +63,8 @@ public class ServletSerie extends HttpServlet{
 
     }
     public Individuo evoluzione( Popolazione popolazione) throws IOException{
-        Fitness fitness = new Fitness("SERIE", minSeason, maxSeason, listaGeneri, 80, 100);
-        GaUtility utility = new GaUtility(550, "SERIE", fitness);
+        Fitness fitness = new Fitness("SHOW", minSeason, maxSeason, listaGeneri, 80, 100);
+        GaUtility utility = new GaUtility(550, "SHOW", fitness);
 
         utility.selezione(popolazione);
         utility.crossOver(popolazione);
